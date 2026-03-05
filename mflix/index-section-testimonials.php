@@ -1,50 +1,78 @@
 <?php
+
+/**
+ * Student Testimonials — 3-column cards
+ * DB Query stub:
+ * $SQL = "SELECT t.*, a.first_name, a.last_name, c.title as course_title, c.hash as course_hash
+ *         FROM mflix_testimonials t
+ *         LEFT JOIN accounts a ON a.id = t.user_id
+ *         LEFT JOIN mflix_courses c ON c.id = t.course_id
+ *         WHERE t.status = 'approved'
+ *         ORDER BY RAND() LIMIT 3";
+ */
+
 $TESTIMONIALS = [
   [
-    'stars' => '★★★★★',
-    'quote' => '"The video quality is insane. It actually feels like Netflix but for learning. I finished an entire course in one weekend."',
-    'name' => 'Maria Santos',
-    'date' => 'Feb 2026',
+    'name' => 'Jan Edilbert N. Solomon',
+    'date' => 'Jul 2, 2025',
+    'avatar_color' => '#E50914',
+    'rating' => 10,
+    'course' => 'Introduction to Film and Interactive Media',
+    'text' => 'such great course keep it up guys',
   ],
   [
-    'stars' => '★★★★★',
-    'quote' => '"Way better than reading slides. The professors explain things clearly and the platform tracks my progress automatically."',
-    'name' => 'James Reyes',
-    'date' => 'Jan 2026',
+    'name' => 'Maria Arabella Dasal',
+    'date' => 'Dec 4, 2024',
+    'avatar_color' => '#3E7EFF',
+    'rating' => 10,
+    'course' => 'Computer Programming 1',
+    'text' => 'The modules helped me with my midterms and finals',
   ],
   [
-    'stars' => '★★★★☆',
-    'quote' => '"I use MFLIX to review before exams. Being able to rewatch lectures at 2x speed is a game changer for last-minute cramming."',
-    'name' => 'Carlo Mendoza',
-    'date' => 'Dec 2025',
+    'name' => 'Bernard A. Bullicer',
+    'date' => 'Nov 19, 2024',
+    'avatar_color' => '#17C653',
+    'rating' => 9,
+    'course' => 'Computer Programming 1',
+    'text' => 'The video presentation is well thought of and precisely discusses the topics well.',
   ],
 ];
 ?>
 
-<section>
-  <div class="px-6 py-5" style="border-bottom: 1px solid #E5E7EB;">
-    <span class="fw-bolder text-gray-900" style="font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 1px;">
-      WHAT STUDENTS SAY
-    </span>
+<section class="mb-5">
+  <!-- Header -->
+  <div class="text-center mb-8">
+    <h2 class="fw-bolder text-gray-900 mb-2" style="font-size: 28px;">What Students Are Saying</h2>
+    <p class="text-gray-500 fs-7 mb-0">Learn to software interest to our students in many field tutorials</p>
   </div>
 
-  <div class="row g-4 p-5">
-    <?php foreach ($TESTIMONIALS as $i => $t): ?>
-    <div class="col-lg-4">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body d-flex flex-column gap-4">
-          <span class="d-inline-block align-self-start fw-bold fs-8 px-2 py-1 rounded-2" style="background-color: rgba(229,9,20,0.1); color: #e50914;">
-            <?= $t['stars'] ?>
-          </span>
-          <p class="text-gray-900 fs-7 mb-0" style="line-height: 1.5;">
-            <?= htmlspecialchars($t['quote']) ?>
-          </p>
-          <span class="fw-bold fs-8 text-gray-900">
-            <?= htmlspecialchars($t['name']) ?> &middot; <?= htmlspecialchars($t['date']) ?>
-          </span>
+  <!-- Grid -->
+  <div class="row g-5">
+    <?php foreach ($TESTIMONIALS as $testimonial): ?>
+      <div class="col-lg-4 col-md-6">
+        <div class="card border border-gray-200 rounded-3 h-100">
+          <div class="card-body d-flex flex-column gap-4 p-6">
+            <!-- User row -->
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-3">
+                <div class="rounded-circle" style="width: 40px; height: 40px; background-color: <?= $testimonial['avatar_color'] ?>;"></div>
+                <div>
+                  <div class="fw-semibold text-gray-900" style="font-size: 13px;"><?= htmlspecialchars($testimonial['name']) ?></div>
+                  <div class="text-gray-500" style="font-size: 11px;"><?= htmlspecialchars($testimonial['date']) ?></div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-1">
+                <i class="ki-duotone ki-star fs-7" style="color: #F6C000;"><span class="path1"></span><span class="path2"></span></i>
+                <span class="fw-bold text-gray-900 fs-7"><?= $testimonial['rating'] ?></span>
+              </div>
+            </div>
+            <!-- Course name -->
+            <span class="fw-semibold text-mflix fs-7"><?= htmlspecialchars($testimonial['course']) ?></span>
+            <!-- Quote -->
+            <p class="text-gray-600 fs-8 mb-0" style="line-height: 1.5;"><?= htmlspecialchars($testimonial['text']) ?></p>
+          </div>
         </div>
       </div>
-    </div>
     <?php endforeach; ?>
   </div>
 </section>
