@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Static files pass through
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Named routes → subdirectory entry points
+RewriteRule ^discover/?$          pages/discover/index.php [QSA,L]
+RewriteRule ^courses/?$           pages/courses/index.php  [QSA,L]
+RewriteRule ^course/(.+)$         pages/course/index.php?id=$1       [QSA,L]
+RewriteRule ^testimonials/(.+)$   pages/testimonials/index.php?id=$1 [QSA,L]
+RewriteRule ^video/(.+)$          pages/video/index.php?id=$1        [QSA,L]
+RewriteRule ^channel/(.+)$        pages/channel/index.php?id=$1      [QSA,L]
+
+# Extensionless .php fallback
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

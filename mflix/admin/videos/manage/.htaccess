@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# DO NOT inherit rules from parent directory
+RewriteOptions InheritDownBefore
+
+# Disable the .php rewrite rule explicitly
+RewriteRule ^([^.]+)\.php$ - [L]
+
+# Skip physical files and folders
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Root path: /manage/ → index.php
+RewriteRule ^$ index.php [QSA,L]
+
+# Any single path: /manage/{id} → index.php?id={id}
+RewriteRule ^([^/]+)/?$ index.php?id=$1 [QSA,L]

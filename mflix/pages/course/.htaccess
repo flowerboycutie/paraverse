@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# DO NOT inherit rules from parent directory
+RewriteOptions InheritDownBefore
+
+# Disable the .php rewrite rule explicitly
+RewriteRule ^([^.]+)\.php$ - [L]
+
+# Skip physical files and folders
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Root path: /course/ → index.php
+RewriteRule ^$ index.php [QSA,L]
+
+# Any single path: /course/{hash} → index.php?id={hash}
+RewriteRule ^([^/]+)/?$ index.php?id=$1 [QSA,L]

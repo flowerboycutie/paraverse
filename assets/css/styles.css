@@ -1,0 +1,94 @@
+body {
+    background-color: rgb(243, 243, 243) !important;
+}
+main {
+    padding-top: 3rem;
+}
+.hero {
+    padding: 5rem;
+    border-radius: 1rem;
+    gap: 3rem;
+}
+.mflix-container {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 1rem;
+}
+
+/* Only apply to poster images with card-img-top class */
+.mflix-container .card-img-top, .hero img {
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+.view-all {
+    background: #e50914 !important;
+    color: #fff !important;
+}
+.view-all:hover, .view-all:focus, .view-all:active {
+    background: #a00610 !important;
+}
+.btn-mflix {
+    background-color: #e50914 !important;
+    border-color: #e50914 !important;
+    color: #fff !important;
+}
+.btn-mflix:hover {
+    background-color: #c20712 !important;
+    border-color: #c20712 !important;
+    color: #fff !important;
+}
+.btn-mflix:active,
+.btn-mflix:focus {
+    background-color: #a00610 !important;
+    border-color: #a00610 !important;
+    color: #fff !important;
+}
+.btn-outline-mflix {
+    border: 2px solid #e50914 !important;
+    color: #fff !important;
+}
+.btn-outline-mflix:hover {
+    background-color: #e50914 !important;
+    border-color: #e50914 !important;
+    color: #fff !important;
+}
+.btn-outline-mflix:active,
+.btn-outline-mflix:focus {
+    background-color: #e50914 !important;
+    border-color: #e50914 !important;
+    color: #fff !important;
+}
+
+/* More specific selector */
+.mflix-container .avatar {
+    height: 50px !important;
+    width: 50px !important;
+    aspect-ratio: 1/1 !important;
+    object-fit: cover !important;
+    border-radius: 50%;
+}
+
+.course-name {
+    color: #e50914;
+}
+
+#kt_app_header_menu .menu-item .menu-link:hover,
+#kt_app_header_menu .menu-item .menu-link:hover .menu-title,
+#kt_app_header_menu .menu-item .menu-link:hover i {
+    color: #e50914 !important;
+}
+
+.thumbnail {
+    aspect-ratio: 16/9 !important;
+}
+
+.lock-btn {
+    background-color: #e50914 !important;
+}
+
+.lock-btn:hover {
+    background-color: #c20712 !important;
+}
