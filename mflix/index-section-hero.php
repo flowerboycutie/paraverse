@@ -68,43 +68,39 @@ $MARQUEE_IMAGES = [
   </div>
 
   <!-- Gradient Overlay -->
-  <div class="position-absolute w-100 h-100" style="top: 0; left: 0; background: radial-gradient(ellipse 120% 120% at center, transparent 0%, rgba(10,10,10,0.8) 40%, #0A0A0A 85%); z-index: 1;"></div>
+  <div class="position-absolute w-100 h-100" style="top: 0; left: 0; background: radial-gradient(ellipse 120% 120% at center, transparent 0%, rgba(10,10,10,0.8) 40%, #0A0A0A 75%); z-index: 1;"></div>
 
-  <div class="app-container container-xxl pt-10">
-    <div class="row justify-content-end pt-20">
-      <div class="col-4">
-        <div class="card bg-transparent border-0">
-          <div class="card-body gap-5">
-            <div class="d-flex flex-column">
-              <span class="card-text text-white">Featured Course</span>
-              <img src="./poster-all-about-lily-chou-chou.jpg" alt=""
-                class="w-auto h-300px object-fit-contain align-self-start">
-            </div>
-            <div class="d-flex flex-column justify-content-center">
-              <span class="card-title display-4 text-white">Course Title</span>
-              <span class="card-text text-white">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</span>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- <div class="app-container container-xxl h-100 position-relative pt-10" style="z-index: 2;"> -->
+  <div class="row h-100 align-items-center justify-content-evenly position-relative" style="z-index: 2;">
+
+    <!-- Poster -->
+    <div class="col-auto d-flex flex-column gap-1">
+      <span class="fs-3 fw-bold text-primary">⭐️ Featured Course</span>
+      <img src="./poster-all-about-lily-chou-chou.jpg" alt=""
+        class="w-auto h-450px object-fit-contain rounded flex-shrink-0">
     </div>
-    <!-- Center CTA -->
-    <div class="position-absolute w-100 h-100 d-flex flex-column align-items-start justify-content-center text-center px-5" style="top: 0; left: 0; z-index: 2;">
-      <h1 class="text-white fw-bolder mb-3 text-start" style="font-size: 56px; letter-spacing: -1px; line-height: 1.1; max-width: 800px;">
-        Binge Watch Courses<br>Like Your Favorite TV Show
-      </h1>
-      <p class="mb-8 text-start" style="color: rgba(255,255,255,0.6); font-size: 16px; line-height: 1.5; max-width: 600px;">
-        Stream educational content anytime, anywhere. Your next skill is just a play button away.
-      </p>
-      <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center">
-        <a href="/mflix/" onclick="KTApp.showPageLoading()" class="btn btn-mflix rounded-2 d-flex align-items-center gap-2" style="padding: 14px 28px;">
-          <i class="ki-duotone ki-to-right fs-4 text-white"></i>
-          <span class="fw-semibold fs-6 text-white">Start Watching</span>
+
+    <!-- CTA -->
+    <div class="col-auto d-flex flex-column justify-content-center gap-5">
+      <div>
+        <h1 class="text-white fw-bolder display-3 mb-0">
+          Binge Watch Courses<br>Like Your Favorite TV Show
+        </h1>
+        <p class="text-white-50 fs-5 mb-0">
+          Stream educational content anytime, anywhere. Your next skill is just a play button away.
+        </p>
+      </div>
+      <div class="d-flex align-items-center gap-5">
+        <a href="#" onclick="KTApp.showPageLoading()"
+          class="btn btn-pill btn-primary fw-bolder px-8">
+          <i class="fa-solid fa-play fa-sm"></i> Watch Now
         </a>
-        <a href="/mflix/courses/" onclick="KTApp.showPageLoading()" class="btn rounded-2 d-flex align-items-center" style="padding: 14px 28px; border: 1px solid rgba(255,255,255,0.3); color: #fff;">
-          <span class="fw-semibold fs-6">Browse Courses</span>
+        <a href="#" onclick="KTApp.showPageLoading()"
+          class="btn btn-pill btn-outline btn-outline-primary fw-bolder px-8 text-white">
+          <i class="fa-solid fa-list fa-sm"></i> View Courses
         </a>
       </div>
     </div>
   </div>
+  <!-- </div> -->
 </section>

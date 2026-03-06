@@ -39,7 +39,8 @@ $TESTIMONIALS = [
 ];
 ?>
 
-<section class="mb-5">
+
+<section class="container py-5">
   <!-- Header -->
   <div class="text-center mb-8">
     <h2 class="fw-bolder text-gray-900 mb-2" style="font-size: 28px;">What Students Are Saying</h2>

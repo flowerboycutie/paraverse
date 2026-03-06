@@ -42,7 +42,7 @@ $RECENT_VIDEOS = [
 ];
 ?>
 
-<section class="mb-5">
+<section class="container py-5">
   <!-- Header -->
   <div class="d-flex align-items-center justify-content-between mb-8">
     <div>
