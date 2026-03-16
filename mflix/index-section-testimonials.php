@@ -1,79 +1,90 @@
 <?php
-
-/**
- * Student Testimonials — 3-column cards
- * DB Query stub:
- * $SQL = "SELECT t.*, a.first_name, a.last_name, c.title as course_title, c.hash as course_hash
- *         FROM mflix_testimonials t
- *         LEFT JOIN accounts a ON a.id = t.user_id
- *         LEFT JOIN mflix_courses c ON c.id = t.course_id
- *         WHERE t.status = 'approved'
- *         ORDER BY RAND() LIMIT 3";
- */
-
-$TESTIMONIALS = [
+$testimonials = [
   [
-    'name' => 'Jan Edilbert N. Solomon',
-    'date' => 'Jul 2, 2025',
-    'avatar_color' => '#E50914',
-    'rating' => 10,
-    'course' => 'Introduction to Film and Interactive Media',
-    'text' => 'such great course keep it up guys',
+    "profile_url" => "#",
+    "avatar" => "#",
+    "name" => "Jan Edilbert N. Solomon",
+    "date" => "Jul 2, 2025 02:24:35 pm",
+    "rating" => 10,
+    "course_id" => "aa5e2263a14d19eb60ac4eeba81d966799e21023",
+    "course_name" => "Advertising Principles",
+    "review" => "nice course learned a lot"
   ],
   [
-    'name' => 'Maria Arabella Dasal',
-    'date' => 'Dec 4, 2024',
-    'avatar_color' => '#3E7EFF',
-    'rating' => 10,
-    'course' => 'Computer Programming 1',
-    'text' => 'The modules helped me with my midterms and finals',
+    "profile_url" => "#",
+    "avatar" => "#",
+    "name" => "Kensheen Lee N. Fernandez",
+    "date" => "May 24, 2025 10:26:40 am",
+    "rating" => 9,
+    "course_id" => "2a4dfa8ec838633708f075f7cc3aa8c757bc0a92",
+    "course_name" => "Computer Programming 1",
+    "review" => "this is very helpful and informative, great for reviews for exams"
   ],
   [
-    'name' => 'Bernard A. Bullicer',
-    'date' => 'Nov 19, 2024',
-    'avatar_color' => '#17C653',
-    'rating' => 9,
-    'course' => 'Computer Programming 1',
-    'text' => 'The video presentation is well thought of and precisely discusses the topics well.',
-  ],
+    "profile_url" => "/#",
+    "avatar" => "#",
+    "name" => "Juan Dela Cruz",
+    "date" => "Jun 9, 2025 04:40:16 pm",
+    "rating" => 10,
+    "course_id" => "4d277f1f4c126fb672b032b50daf23cb52a8516e",
+    "course_name" => "Building System Design",
+    "review" => "Wow great great",
+  ]
 ];
 ?>
 
+<section style="position: relative; overflow: hidden;">
+  <!--begin::Background Graphic-->
+  <img src="./assets/img/learning.png" alt="" style="
+        position: absolute;
+        right: -50px;
+        top: 50%;
+        transform: translateX(-50%) translateY(-80%) rotate(15deg) scale(0.8);
+        width: 300px;
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;">
+  <!--end::Background Graphic-->
+  <div class="border-0 card-flush h-xl-100 mb-5 mb-xl-10">
+    <div class="text-center mb-17">
+      <h3 class="fw-bolder text-gray-900 mb-2 fs-2hx">You're Not Learning Alone</h3>
+      <p class="text-gray-500 mb-0 mx-auto fw-bold fs-5" style="max-width: 600px;">At M-Flix, learning is more than just about learning lessons — it's about growing together. Our students don't just watch courses, they build skills, gain confidence, and become part of a community that pushes each other forward. Don't just take our word for it — here's what our learners have to say.</p>
+    </div>
+    <div class="card-body p-0">
+      <div class="row g-2 g-xl-5">
 
-<section class="container py-5">
-  <!-- Header -->
-  <div class="text-center mb-8">
-    <h2 class="fw-bolder text-gray-900 mb-2" style="font-size: 28px;">What Students Are Saying</h2>
-    <p class="text-gray-500 fs-7 mb-0">Learn to software interest to our students in many field tutorials</p>
-  </div>
-
-  <!-- Grid -->
-  <div class="row g-5">
-    <?php foreach ($TESTIMONIALS as $testimonial): ?>
-      <div class="col-lg-4 col-md-6">
-        <div class="card border border-gray-200 rounded-3 h-100">
-          <div class="card-body d-flex flex-column gap-4 p-6">
-            <!-- User row -->
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center gap-3">
-                <div class="rounded-circle" style="width: 40px; height: 40px; background-color: <?= $testimonial['avatar_color'] ?>;"></div>
+        <?php foreach ($testimonials as $t): ?>
+          <div class="col-lg-4 my-3 my-sm-1">
+            <div class="card border-0 shadow card-flush h-xl-100 card-rounded">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <a href="<?= $t['profile_url'] ?>" target="_blank" class="symbol symbol-50px me-3">
+                      <img src="<?= $t['avatar'] ?>" class="rounded-circle">
+                    </a>
+                    <div>
+                      <a href="<?= $t['profile_url'] ?>" target="_blank" class="d-block text-dark text-active-mflix fw-bold fs-6"><?= $t['name'] ?></a>
+                      <span class="text-gray-600"><?= $t['date'] ?></span>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="badge badge-light fs-8 px-4 py-3 mb-2 fw-bolder">
+                      <i class="fa fa-star text-warning me-1"></i> <?= $t['rating'] ?>
+                    </span>
+                  </div>
+                </div>
                 <div>
-                  <div class="fw-semibold text-gray-900" style="font-size: 13px;"><?= htmlspecialchars($testimonial['name']) ?></div>
-                  <div class="text-gray-500" style="font-size: 11px;"><?= htmlspecialchars($testimonial['date']) ?></div>
+                  <h5 class="my-5 ellipsis-2">
+                    <a class="text-mflix" onclick="KTApp.showPageLoading()" href="/mflix/testimonials/<?= $t['course_id'] ?>"><?= $t['course_name'] ?></a>
+                  </h5>
+                  <p class="ellipsis-2 fs-5 mb-0"><?= $t['review'] ?></p>
                 </div>
               </div>
-              <div class="d-flex align-items-center gap-1">
-                <i class="ki-duotone ki-star fs-7" style="color: #F6C000;"><span class="path1"></span><span class="path2"></span></i>
-                <span class="fw-bold text-gray-900 fs-7"><?= $testimonial['rating'] ?></span>
-              </div>
             </div>
-            <!-- Course name -->
-            <span class="fw-semibold text-mflix fs-7"><?= htmlspecialchars($testimonial['course']) ?></span>
-            <!-- Quote -->
-            <p class="text-gray-600 fs-8 mb-0" style="line-height: 1.5;"><?= htmlspecialchars($testimonial['text']) ?></p>
           </div>
-        </div>
+        <?php endforeach; ?>
+
       </div>
-    <?php endforeach; ?>
+    </div>
   </div>
 </section>

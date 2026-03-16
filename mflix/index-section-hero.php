@@ -70,35 +70,24 @@ $MARQUEE_IMAGES = [
   <!-- Gradient Overlay -->
   <div class="position-absolute w-100 h-100" style="top: 0; left: 0; background: radial-gradient(ellipse 120% 120% at center, transparent 0%, rgba(10,10,10,0.8) 40%, #0A0A0A 75%); z-index: 1;"></div>
 
-  <!-- <div class="app-container container-xxl h-100 position-relative pt-10" style="z-index: 2;"> -->
-  <div class="row h-100 align-items-center justify-content-evenly position-relative" style="z-index: 2;">
+  <div class="row h-100 flex-column gap-1 align-items-center justify-content-center position-relative" style="z-index: 2;">
 
-    <!-- Poster -->
-    <div class="col-auto d-flex flex-column gap-1">
-      <span class="fs-3 fw-bold text-primary">⭐️ Featured Course</span>
-      <img src="./poster-all-about-lily-chou-chou.jpg" alt=""
-        class="w-auto h-450px object-fit-contain rounded flex-shrink-0">
-    </div>
+    <img src="/assets/img/logo/logo-mflix.svg" alt="M-Flix Logo"
+      class="w-auto h-30px object-fit-contain rounded flex-shrink-0">
 
     <!-- CTA -->
-    <div class="col-auto d-flex flex-column justify-content-center gap-5">
-      <div>
-        <h1 class="text-white fw-bolder display-3 mb-0">
-          Binge Watch Courses<br>Like Your Favorite TV Show
+    <div class="col-auto d-flex flex-column align-items-center justify-content-center gap-5">
+      <div class="text-center mb-0">
+        <h1 class="text-white fw-bolder display-3">
+          Binge Watch Courses<br><span class="text-mflix">Like Your Favorite TV Show</span>
         </h1>
-        <p class="text-white-50 fs-5 mb-0">
+        <p class="text-white-50 fs-4 fw-bold">
           Stream educational content anytime, anywhere. Your next skill is just a play button away.
         </p>
       </div>
-      <div class="d-flex align-items-center gap-5">
-        <a href="#" onclick="KTApp.showPageLoading()"
-          class="btn btn-pill btn-primary fw-bolder px-8">
-          <i class="fa-solid fa-play fa-sm"></i> Watch Now
-        </a>
-        <a href="#" onclick="KTApp.showPageLoading()"
-          class="btn btn-pill btn-outline btn-outline-primary fw-bolder px-8 text-white">
-          <i class="fa-solid fa-list fa-sm"></i> View Courses
-        </a>
+      <div class="d-flex align-items-center justify-content-center gap-5">
+        <a href="#" class="btn btn-mflix btn-active-dark btn-pill px-10 py-3 mx-1 fw-bolder"><i class="fa-solid fa-play fa-sm text-white"></i> Watch Now</a>
+        <a href="#" class="btn btn-color-white btn-outline btn-outline-mflix btn-active-mflix btn-pill px-10 py-3 mx-1 fw-bolder"><i class="fa-solid fa-book fa-sm text-white"></i> Learn More</a>
       </div>
     </div>
   </div>
