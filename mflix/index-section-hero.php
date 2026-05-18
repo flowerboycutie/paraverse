@@ -40,7 +40,7 @@ $MARQUEE_IMAGES = [
 
 <section class="position-relative overflow-hidden" style="height: 700px; background-color: #0A0A0A;">
   <!-- Marquee Rows Container -->
-  <div class="position-absolute w-100 h-100" style="top: 0; left: 0; transform: rotate(-8deg); transform-origin: center center;">
+  <div class="position-absolute w-100 h-100" style="top: 0; left: 0; transform: rotate(-8deg); transform-origin: center center; filter: blur(3px);">
     <!-- Row 1 -->
     <div class="d-flex gap-4 position-absolute" style="top: 60px; left: -100px; animation: mflixMarqueeLeft 30s linear infinite; width: max-content;">
       <?php for ($dup = 0; $dup < 2; $dup++): ?>
