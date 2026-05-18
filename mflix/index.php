@@ -27,7 +27,7 @@ $META_DESC = "Binge-watch a course like it's a show. mflix is an educational vid
           <div class="d-flex flex-column flex-column-fluid">
             <main>
               <?php include("index-section-hero.php"); ?>
-              <div class="app-container container-xxl pt-10">
+              <div class="app-container container-xxl">
                 <?php include("index-section-features.php"); ?>
                 <?php include("index-section-courses.php"); ?>
                 <?php include("index-section-testimonials.php"); ?>

@@ -33,7 +33,7 @@ $testimonials = [
 ];
 ?>
 
-<section style="position: relative; overflow: hidden;">
+<section class="py-20" style="position: relative; overflow: hidden;">
   <!--begin::Background Graphic-->
   <img src="./assets/img/learning.png" alt="" style="
         position: absolute;

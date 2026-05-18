@@ -83,7 +83,7 @@ $courses = [
 ];
 ?>
 
-<section class="my-17">
+<section class="my-17 pt-20">
   <div class="card border-0 shadow card-flush h-xl-100">
 
     <div class="card-header pt-10">
