@@ -1,5 +1,5 @@
 <!--begin::How It Works Section-->
-<section class="pt-20" style="position: relative; overflow: hidden;">
+<section class="my-20 pt-20" style="position: relative; overflow: hidden;">
     <!--begin::Background Graphic-->
     <img src="./assets/img/play.png" alt="" style="
         position: absolute;
