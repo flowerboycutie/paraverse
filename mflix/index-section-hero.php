@@ -36,13 +36,25 @@ $MARQUEE_IMAGES = [
       transform: translateX(0);
     }
   }
+
+  /* Marquee tuning: ensure tracks are visible and optimized for transform animation */
+  .mflix-marquee-track {
+    overflow: visible;
+    will-change: transform;
+  }
+
+  .mflix-marquee-track .marquee-row {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+  }
 </style>
 
-<section class="position-relative overflow-hidden" style="height: 700px; background-color: #0A0A0A;">
+<section class="position-relative overflow-hidden" style="height: 100vh; background-color: #0A0A0A;">
   <!-- Marquee Rows Container -->
-  <div class="position-absolute w-100 h-100" style="top: 0; left: 0; transform: rotate(-8deg); transform-origin: center center; filter: blur(3px);">
+  <div class="position-absolute w-100 h-100 mflix-marquee-track" style="top: 0; left: 0; transform: rotate(-8deg); transform-origin: center center;">
     <!-- Row 1 -->
-    <div class="d-flex gap-4 position-absolute" style="top: 60px; left: -100px; animation: mflixMarqueeLeft 30s linear infinite; width: max-content;">
+    <div class="marquee-row d-flex gap-4 position-absolute" style="top: 60px; left: -100px; animation: mflixMarqueeLeft 30s linear infinite; width: max-content;">
       <?php for ($dup = 0; $dup < 2; $dup++): ?>
         <?php foreach ($MARQUEE_IMAGES as $img): ?>
           <div class="rounded-3 overflow-hidden flex-shrink-0" style="width: 280px; height: 160px; background: url('<?= $img ?>') center/cover no-repeat;"></div>
@@ -50,7 +62,7 @@ $MARQUEE_IMAGES = [
       <?php endfor; ?>
     </div>
     <!-- Row 2 (reverse) -->
-    <div class="d-flex gap-4 position-absolute" style="top: 260px; left: -200px; animation: mflixMarqueeRight 40s linear infinite; width: max-content;">
+    <div class="marquee-row d-flex gap-4 position-absolute" style="top: 260px; left: -200px; animation: mflixMarqueeRight 40s linear infinite; width: max-content;">
       <?php for ($dup = 0; $dup < 2; $dup++): ?>
         <?php foreach (array_reverse($MARQUEE_IMAGES) as $img): ?>
           <div class="rounded-3 overflow-hidden flex-shrink-0" style="width: 280px; height: 160px; background: url('<?= $img ?>') center/cover no-repeat;"></div>
@@ -58,7 +70,15 @@ $MARQUEE_IMAGES = [
       <?php endfor; ?>
     </div>
     <!-- Row 3 -->
-    <div class="d-flex gap-4 position-absolute" style="top: 460px; left: -50px; animation: mflixMarqueeLeft 25s linear infinite; width: max-content;">
+    <div class="marquee-row d-flex gap-4 position-absolute" style="top: 460px; left: -50px; animation: mflixMarqueeLeft 25s linear infinite; width: max-content;">
+      <?php for ($dup = 0; $dup < 2; $dup++): ?>
+        <?php foreach ($MARQUEE_IMAGES as $img): ?>
+          <div class="rounded-3 overflow-hidden flex-shrink-0" style="width: 280px; height: 160px; background: url('<?= $img ?>') center/cover no-repeat;"></div>
+        <?php endforeach; ?>
+      <?php endfor; ?>
+    </div>
+    <!-- Row 4 (additional) -->
+    <div class="marquee-row d-flex gap-4 position-absolute" style="top: 620px; left: -150px; animation: mflixMarqueeRight 35s linear infinite; width: max-content;">
       <?php for ($dup = 0; $dup < 2; $dup++): ?>
         <?php foreach ($MARQUEE_IMAGES as $img): ?>
           <div class="rounded-3 overflow-hidden flex-shrink-0" style="width: 280px; height: 160px; background: url('<?= $img ?>') center/cover no-repeat;"></div>

@@ -34,6 +34,7 @@ $testimonials = [
 ?>
 
 <section class="my-20 py-20" style="position: relative; overflow: hidden;">
+
   <!--begin::Background Graphic-->
   <img src="./assets/img/learning.png" alt="" style="
         position: absolute;
@@ -45,46 +46,53 @@ $testimonials = [
         z-index: 0;
         pointer-events: none;">
   <!--end::Background Graphic-->
-  <div class="border-0 card-flush h-xl-100 mb-5 mb-xl-10">
-    <div class="text-center mb-17">
-      <h3 class="fw-bolder text-gray-900 mb-2 fs-2hx">You're Not Learning Alone</h3>
-      <p class="text-gray-500 mb-0 mx-auto fw-bold fs-5" style="max-width: 600px;">At M-Flix, learning is more than just about learning lessons — it's about growing together. Our students don't just watch courses, they build skills, gain confidence, and become part of a community that pushes each other forward. Don't just take our word for it — here's what our learners have to say.</p>
-    </div>
-    <div class="card-body p-0">
-      <div class="row g-2 g-xl-5">
 
-        <?php foreach ($testimonials as $t): ?>
-          <div class="col-lg-4 my-3 my-sm-1">
-            <div class="card border-0 shadow card-flush h-xl-100 card-rounded">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-                  <div class="d-flex align-items-center">
-                    <a href="<?= $t['profile_url'] ?>" target="_blank" class="symbol symbol-50px me-3">
-                      <img src="<?= $t['avatar'] ?>" class="rounded-circle">
-                    </a>
-                    <div>
-                      <a href="<?= $t['profile_url'] ?>" target="_blank" class="d-block text-dark text-active-mflix fw-bold fs-6"><?= $t['name'] ?></a>
-                      <span class="text-gray-600"><?= $t['date'] ?></span>
-                    </div>
-                  </div>
-                  <div>
-                    <span class="badge badge-light fs-8 px-4 py-3 mb-2 fw-bolder">
-                      <i class="fa fa-star text-warning me-1"></i> <?= $t['rating'] ?>
-                    </span>
-                  </div>
-                </div>
-                <div>
-                  <h5 class="my-5 ellipsis-2">
-                    <a class="text-mflix" onclick="KTApp.showPageLoading()" href="/mflix/testimonials/<?= $t['course_id'] ?>"><?= $t['course_name'] ?></a>
-                  </h5>
-                  <p class="ellipsis-2 fs-5 mb-0"><?= $t['review'] ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        <?php endforeach; ?>
-
-      </div>
-    </div>
+  <!--begin::Heading-->
+  <div class="text-center mb-20">
+    <span class="badge badge-light-danger fw-bold fs-7 px-4 py-2 mb-5 text-uppercase ls-1" style="color: #e50914;">Student Reviews</span>
+    <h2 class="fs-2hx fw-bolder text-gray-900 lh-sm mb-5">You're Not Learning Alone</h2>
+    <p class="fs-5 text-muted fw-semibold mb-0 mx-auto" style="max-width: 600px;">
+      At M-Flix, learning is more than just watching lessons — it's about growing together. Don't just take our word for it, here's what our learners have to say.
+    </p>
   </div>
+  <!--end::Heading-->
+
+  <!--begin::Minimal List-->
+  <div class="row g-0">
+    <?php foreach ($testimonials as $i => $t): ?>
+      <div class="col-lg-4 px-8 <?= $i < count($testimonials) - 1 ? 'border-end' : '' ?> mb-10 mb-lg-0">
+        <div style="border-left: 3px solid #e50914;" class="ps-7 h-100 d-flex flex-column">
+
+          <!--begin::Review-->
+          <p class="fs-4 fw-semibold text-gray-700 mb-7 flex-grow-1">"<?= $t['review'] ?>"</p>
+          <!--end::Review-->
+
+          <!--begin::Course-->
+          <a href="/mflix/testimonials/<?= $t['course_id'] ?>" onclick="KTApp.showPageLoading()"
+            class="fw-bold fs-7 text-uppercase d-block mb-6 ellipsis-1" style="color: #e50914; letter-spacing: 0.05em;">
+            <?= $t['course_name'] ?>
+          </a>
+          <!--end::Course-->
+
+          <!--begin::Author-->
+          <div class="d-flex align-items-center gap-3">
+            <div class="symbol symbol-35px flex-shrink-0">
+              <img src="<?= $t['avatar'] ?>" class="rounded-circle">
+            </div>
+            <div class="flex-grow-1 mw-0">
+              <a href="<?= $t['profile_url'] ?>" class="d-block text-gray-900 fw-bold fs-6 text-hover-mflix ellipsis-1"><?= $t['name'] ?></a>
+              <span class="text-muted fs-7"><?= $t['date'] ?></span>
+            </div>
+            <span class="badge badge-light fw-bolder fs-8 px-3 py-2 flex-shrink-0">
+              <i class="fa fa-star text-warning me-1"></i><?= $t['rating'] ?>
+            </span>
+          </div>
+          <!--end::Author-->
+
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <!--end::Minimal List-->
+
 </section>

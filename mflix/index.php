@@ -14,6 +14,52 @@ $META_DESC = "Binge-watch a course like it's a show. mflix is an educational vid
 
 <head>
   <?php HEAD_ESSENTIALS(); ?>
+  <style>
+    :root {
+      --app-header-height: 72px
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      overscroll-behavior-y: none;
+      -webkit-overflow-scrolling: touch
+    }
+
+    body {
+      padding-top: var(--app-header-height);
+      background-clip: padding-box
+    }
+
+    /* Force header to stay on top */
+    #kt_app_header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 99999;
+      background-color: var(--bs-white, #fff)
+    }
+
+    /* Prevent accidental horizontal overflow from transforms and absolute elements */
+    /* Note: don't globally force overflow rules on positioned elements - can break marquees */
+
+
+    /* Ensure main content can scroll normally but won't overscroll the viewport */
+    #kt_app_root,
+    #kt_app_page {
+      min-height: calc(100vh - var(--app-header-height));
+    }
+  </style>
 </head>
 
 <body id="kt_app_body" data-kt-app-page-loading-enabled="true" data-kt-app-page-loading="on"
