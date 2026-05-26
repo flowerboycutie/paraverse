@@ -11,7 +11,7 @@ function HEAD_ESSENTIALS()
     ENT_NOQUOTES
   );
   $META_IMAGE = empty($META_IMAGE) ? "https://paraverse.feutech.edu.ph/assets/img/office.jpg" :
-    Sanitizer::url($META_IMAGE);
+    Sanigtizer::url($META_IMAGE);
   $META_LINK = "https://" . $_SERVER['HTTP_HOST'] . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
   $maintenance = isset($_SESSION['loggedins'])
