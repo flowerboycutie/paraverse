@@ -78,7 +78,7 @@ $MARQUEE_IMAGES = [
       <?php endfor; ?>
     </div>
     <!-- Row 4 (additional) -->
-    <div class="marquee-row d-flex gap-4 position-absolute" style="top: 620px; left: -150px; animation: mflixMarqueeRight 35s linear infinite; width: max-content;">
+    <div class="marquee-row d-flex gap-4 position-absolute" style="top: 660px; left: -150px; animation: mflixMarqueeRight 35s linear infinite; width: max-content;">
       <?php for ($dup = 0; $dup < 2; $dup++): ?>
         <?php foreach ($MARQUEE_IMAGES as $img): ?>
           <div class="rounded-3 overflow-hidden flex-shrink-0" style="width: 280px; height: 160px; background: url('<?= $img ?>') center/cover no-repeat;"></div>
