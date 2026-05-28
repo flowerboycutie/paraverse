@@ -11,14 +11,14 @@ function HEAD_ESSENTIALS()
     ENT_NOQUOTES
   );
   $META_IMAGE = empty($META_IMAGE) ? "https://paraverse.feutech.edu.ph/assets/img/office.jpg" :
-    Sanigtizer::url($META_IMAGE);
+    Sanitizer::url($META_IMAGE);
   $META_LINK = "https://" . $_SERVER['HTTP_HOST'] . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
   $maintenance = isset($_SESSION['loggedins'])
     ? "
 <script>
   $(document).ready(function () {
-    var alertBox   = $('<div class=\"alert bg-light-danger fw-semibold text-center fs-5 py-7 px-lg-20\"></div>')
+    var alertBox = $('<div class=\"alert bg-light-danger fw-semibold text-center fs-5 py-7 px-lg-20\"></div>')
       .html(`
                         <div class=\"app-container container-xxl\">
                             Some features may be temporarily unavailable as we complete recent updates. 
