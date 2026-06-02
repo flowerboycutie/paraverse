@@ -5,8 +5,8 @@ include($_SERVER['DOCUMENT_ROOT'] . '/mflix/functions-new.php');
 
 // IS_LOGGED_IN($_SERVER['REQUEST_URI']);
 
-$META_TITLE = "mflix — Stream Your Learning";
-$META_DESC = "Binge-watch a course like it's a show. mflix is an educational video streaming platform by FEU Tech.";
+$META_TITLE = "Flashcards";
+$META_DESC = "Create decks, practice with purpose, and test your knowledge — all in one place.";
 ?>
 
 <!DOCTYPE html>
