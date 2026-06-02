@@ -669,7 +669,7 @@
                     <a href="#" class="btn btn-teal btn-lg rounded-3 px-4">
                         <i class="bi bi-play-fill text-white"></i> Get Started
                     </a>
-                    <a href="#fc-features" class="btn btn-outline-teal btn-lg rounded-3 px-4">
+                    <a href="#fc-features" class="btn btn-outline-teal btn-lg rounded-3 px-4 border border-2">
                         <i class="bi bi-grid-1x2"></i> See Features
                     </a>
                 </div>
