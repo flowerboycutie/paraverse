@@ -641,7 +641,7 @@
     }
 </style>
 <section id="fc-about" class="py-5 py-lg-6 bg-white">
-    <div class="container py-4">
+    <div class="app-container container-xxl py-4">
         <div class="row align-items-center g-5">
 
             <!-- copy -->

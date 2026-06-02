@@ -644,8 +644,8 @@
     <div class="hero-blob hero-blob-1"></div>
     <div class="hero-blob hero-blob-2"></div>
 
-    <div class="container position-relative py-5">
-        <div class="row align-items-center g-5">
+    <div class="app-container container-xxl">
+        <div class=" row align-items-center g-5">
 
             <!-- copy -->
             <div class="col-lg-6">
