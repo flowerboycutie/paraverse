@@ -51,25 +51,6 @@
         border-color: var(--fc-teal-mid) !important;
     }
 
-    .btn-teal,
-    .btn-outline-teal {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        padding-top: .75rem;
-        padding-bottom: .75rem;
-    }
-
-    .btn-teal i,
-    .btn-outline-teal i {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        vertical-align: middle;
-    }
-
     .btn-teal {
         background-color: var(--fc-teal);
         color: #fff;
@@ -644,6 +625,23 @@
         color: #fff !important;
     }
 
+
+    /* ── TESTIMONIALS ── */
+    .testimonial-card {
+        transition: box-shadow .2s, transform .2s;
+        background: #fff;
+    }
+
+    .testimonial-card:hover {
+        box-shadow: 0 8px 32px rgba(26, 60, 58, .1) !important;
+        transform: translateY(-4px);
+    }
+
+    .testimonial-card--featured {
+        background: var(--fc-teal-light) !important;
+        border-color: var(--fc-teal-mid) !important;
+    }
+
     @media (max-width: 575px) {
         .chip-3 {
             display: none;
@@ -659,103 +657,160 @@
         }
     }
 </style>
-<section id="fc-hero" class="bg-teal-light d-flex align-items-center py-5 py-lg-0">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
 
-    <div class="app-container container-xxl">
-        <div class=" row align-items-center g-5">
+<section id="fc-testimonials" class="py-5 py-lg-6 bg-white">
+    <div class="container py-4">
 
-            <!-- copy -->
-            <div class="col-lg-6">
-                <!-- badge -->
-                <div class="fade-up-1 mb-4">
-                    <span class="badge rounded-pill bg-white border border-teal-mid text-teal px-3 py-2 fw-semibold" style="font-size:.75rem;letter-spacing:.05em;">
-                        <span class="d-inline-block rounded-circle bg-warning me-1" style="width:7px;height:7px;"></span>
-                        Technical Reviewer System
-                    </span>
-                </div>
+        <div class="text-center mb-5">
+            <div class="eyebrow mb-3">Testimonials</div>
+            <h2 class="fw-bold text-teal-deep mb-3" style="font-size:clamp(1.9rem,3.5vw,2.75rem);letter-spacing:-.025em;line-height:1.15;">
+                What students are saying
+            </h2>
+            <p class="text-slate mx-auto lh-lg" style="max-width:520px;">
+                Real feedback from learners who used Flashcards to prepare for their exams.
+            </p>
+        </div>
 
-                <h1 class="hero-headline text-teal-deep fade-up-2 mb-3">
-                    Study smarter with<br><span>Flashcards</span>
-                </h1>
+        <div class="row g-4">
 
-                <p class="text-slate fs-5 lh-lg fade-up-3 mb-4" style="max-width:520px;">
-                    A structured reviewer system built for learners who mean business. Create decks, practice with purpose, and test your knowledge — all in one place.
-                </p>
-
-                <div class="d-flex flex-wrap gap-3 fade-up-4">
-                    <a href="#" class="btn btn-teal btn-lg rounded-3 px-4">
-                        <i class="bi bi-play-fill text-white"></i> Get Started
-                    </a>
-                    <a href="#fc-features" class="btn btn-outline-teal btn-lg rounded-3 px-4 border border-2">
-                        <i class="bi bi-grid-1x2"></i> See Features
-                    </a>
-                </div>
-
-                <!-- stats -->
-                <div class="d-flex flex-wrap align-items-center gap-4 mt-5 fade-up-5">
-                    <div>
-                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">3</div>
-                        <div class="text-slate small fw-medium mt-1">Study Modes</div>
+            <!-- Card 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="h-100 border rounded-4 p-4 d-flex flex-column gap-3 testimonial-card">
+                    <div class="d-flex gap-1">
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                     </div>
-                    <div class="stat-divider"></div>
-                    <div>
-                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">100</div>
-                        <div class="text-slate small fw-medium mt-1">Items per Exam</div>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div>
-                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">CSV</div>
-                        <div class="text-slate small fw-medium mt-1">Bulk Import</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- visual -->
-            <div class="col-lg-6 d-flex justify-content-center fade-up-2">
-                <div class="card-stack">
-                    <div class="card-shadow card-shadow-2"></div>
-                    <div class="card-shadow card-shadow-1"></div>
-                    <div class="flip-wrap" onclick="heroFlip()">
-                        <div class="flip-inner" id="heroFlipInner">
-                            <div class="fc-face fc-front">
-                                <div class="fc-label text-teal">Question</div>
-                                <div class="fc-question text-teal-deep">What is Flashcards?</div>
-                                <div class="d-flex align-items-center gap-1 mt-3 text-slate" style="font-size:.72rem;">
-                                    <i class="bi bi-arrow-repeat"></i> Click to reveal answer
-                                </div>
-                            </div>
-                            <div class="fc-face fc-back">
-                                <div class="fc-label text-white">Answer</div>
-                                <div class="fc-question text-white">Flashcards is a tool that makes learning fun and efficient!</div>
-                                <div class="d-flex align-items-center gap-1 mt-3 text-white opacity-50" style="font-size:.72rem;">
-                                    <i class="bi bi-arrow-repeat"></i> Click to flip back
-                                </div>
-                            </div>
+                    <p class="text-slate lh-lg mb-0" style="font-size:.95rem;">
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio autem blanditiis minus aspernatur, facere aliquam."
+                    </p>
+                    <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0 bg-teal" style="width:40px;height:40px;font-size:.9rem;">JR</div>
+                        <div>
+                            <div class="fw-bold text-teal-deep small">Juan Reyes</div>
+                            <div class="text-slate" style="font-size:.78rem;">BS Computer Science, Year 3</div>
                         </div>
                     </div>
-                    <!-- chips -->
-                    <div class="hero-chip d-flex align-items-center gap-2 chip-1">
-                        <span class="d-flex align-items-center justify-content-center rounded-2 bg-teal-light text-teal" style="width:28px;height:28px;font-size:.85rem;"><i class="bi bi-book-half"></i></span>
-                        Learn
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="h-100 border rounded-4 p-4 d-flex flex-column gap-3 testimonial-card testimonial-card--featured">
+                    <div class="d-flex gap-1">
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                     </div>
-                    <div class="hero-chip d-flex align-items-center gap-2 chip-2">
-                        <span class="d-flex align-items-center justify-content-center rounded-2" style="width:28px;height:28px;font-size:.85rem;background:#ECFDF5;color:#059669;"><i class="bi bi-pencil-square"></i></span>
-                        Practice
-                    </div>
-                    <div class="hero-chip d-flex align-items-center gap-2 chip-3">
-                        <span class="d-flex align-items-center justify-content-center rounded-2" style="width:28px;height:28px;font-size:.85rem;background:#FFF7ED;color:#EA580C;"><i class="bi bi-clipboard-check"></i></span>
-                        Test
+                    <p class="lh-lg mb-0" style="font-size:.95rem;color:var(--fc-teal-deep);">
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, similique! Provident officia cum dolores nihil."
+                    </p>
+                    <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top" style="border-color:rgba(58,175,169,.2) !important;">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0" style="width:40px;height:40px;font-size:.9rem;background:var(--fc-teal-deep);">MC</div>
+                        <div>
+                            <div class="fw-bold small" style="color:var(--fc-teal-deep);">Maria Cruz</div>
+                            <div style="font-size:.78rem;color:var(--fc-teal);">BS Information Technology, Year 4</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-        </div>
-    </div>
+            <!-- Card 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="h-100 border rounded-4 p-4 d-flex flex-column gap-3 testimonial-card">
+                    <div class="d-flex gap-1">
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-half text-warning" style="font-size:.85rem;"></i>
+                    </div>
+                    <p class="text-slate lh-lg mb-0" style="font-size:.95rem;">
+                        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, hic. Minima accusamus nobis fuga nostrum."
+                    </p>
+                    <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0 bg-teal" style="width:40px;height:40px;font-size:.9rem;">AL</div>
+                        <div>
+                            <div class="fw-bold text-teal-deep small">Angelo Lim</div>
+                            <div class="text-slate" style="font-size:.78rem;">BS Computer Engineering, Year 2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="h-100 border rounded-4 p-4 d-flex flex-column gap-3 testimonial-card">
+                    <div class="d-flex gap-1">
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                    </div>
+                    <p class="text-slate lh-lg mb-0" style="font-size:.95rem;">
+                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe vero porro laboriosam illo, cumque itaque."
+                    </p>
+                    <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0 bg-teal" style="width:40px;height:40px;font-size:.9rem;">SK</div>
+                        <div>
+                            <div class="fw-bold text-teal-deep small">Sofia Katipunan</div>
+                            <div class="text-slate" style="font-size:.78rem;">BS Information Systems, Year 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="h-100 border rounded-4 p-4 d-flex flex-column gap-3 testimonial-card">
+                    <div class="d-flex gap-1">
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star text-warning" style="font-size:.85rem;"></i>
+                    </div>
+                    <p class="text-slate lh-lg mb-0" style="font-size:.95rem;">
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi exercitationem minima facere, facilis sunt praesentium."
+                    </p>
+                    <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0 bg-teal" style="width:40px;height:40px;font-size:.9rem;">RB</div>
+                        <div>
+                            <div class="fw-bold text-teal-deep small">Ramon Buenaventura</div>
+                            <div class="text-slate" style="font-size:.78rem;">BS Computer Science, Year 2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="h-100 border rounded-4 p-4 d-flex flex-column gap-3 testimonial-card">
+                    <div class="d-flex gap-1">
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                        <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
+                    </div>
+                    <p class="text-slate lh-lg mb-0" style="font-size:.95rem;">
+                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem et ipsa, aut ducimus sed blanditiis!"
+                    </p>
+                    <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0 bg-teal" style="width:40px;height:40px;font-size:.9rem;">DP</div>
+                        <div>
+                            <div class="fw-bold text-teal-deep small">Daniela Pascual</div>
+                            <div class="text-slate" style="font-size:.78rem;">BS Electronics Engineering, Year 4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /row -->
+    </div><!-- /container -->
 </section>
-<script>
-    function heroFlip() {
-        document.getElementById("heroFlipInner").classList.toggle("flipped");
-    }
-</script>

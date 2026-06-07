@@ -74,6 +74,10 @@ $META_DESC = "Create decks, practice with purpose, and test your knowledge — a
             <main>
               <?php include("index-section-hero.php"); ?>
               <?php include("index-section-about.php"); ?>
+              <?php include("index-section-features.php"); ?>
+              <?php include("index-section-how-it-works.php"); ?>
+              <?php include("index-section-testimonials.php"); ?>
+              <?php include("index-section-cta.php"); ?>
             </main>
           </div>
           <?php include("partials/_footer.php"); ?>

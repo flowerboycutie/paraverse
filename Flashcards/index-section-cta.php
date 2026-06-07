@@ -51,25 +51,6 @@
         border-color: var(--fc-teal-mid) !important;
     }
 
-    .btn-teal,
-    .btn-outline-teal {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        padding-top: .75rem;
-        padding-bottom: .75rem;
-    }
-
-    .btn-teal i,
-    .btn-outline-teal i {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        vertical-align: middle;
-    }
-
     .btn-teal {
         background-color: var(--fc-teal);
         color: #fff;
@@ -659,103 +640,104 @@
         }
     }
 </style>
-<section id="fc-hero" class="bg-teal-light d-flex align-items-center py-5 py-lg-0">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
 
-    <div class="app-container container-xxl">
-        <div class=" row align-items-center g-5">
+<section id="fc-cta" class="py-5 py-lg-6" style="background:#F8FAFF;">
+    <div class="container py-4">
+        <div class="cta-card bg-teal-deep text-center p-5">
+            <div class="cta-blob cta-blob-1"></div>
+            <div class="cta-blob cta-blob-2"></div>
+            <div class="position-relative">
 
-            <!-- copy -->
-            <div class="col-lg-6">
-                <!-- badge -->
-                <div class="fade-up-1 mb-4">
-                    <span class="badge rounded-pill bg-white border border-teal-mid text-teal px-3 py-2 fw-semibold" style="font-size:.75rem;letter-spacing:.05em;">
-                        <span class="d-inline-block rounded-circle bg-warning me-1" style="width:7px;height:7px;"></span>
-                        Technical Reviewer System
-                    </span>
-                </div>
+                <span class="badge rounded-pill px-3 py-2 mb-4 d-inline-flex align-items-center gap-2 fw-bold" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#7ECFCB;font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;">
+                    <i class="bi bi-stars"></i> Start Reviewing Today
+                </span>
 
-                <h1 class="hero-headline text-teal-deep fade-up-2 mb-3">
-                    Study smarter with<br><span>Flashcards</span>
-                </h1>
+                <h2 class="cta-heading text-white mb-3">
+                    Ready to actually<br>
+                    <span style="color:var(--fc-amber);">remember</span> what you study?
+                </h2>
 
-                <p class="text-slate fs-5 lh-lg fade-up-3 mb-4" style="max-width:520px;">
-                    A structured reviewer system built for learners who mean business. Create decks, practice with purpose, and test your knowledge — all in one place.
+                <p class="mx-auto mb-5 lh-lg" style="max-width:500px;color:#94A3B8;font-size:1.05rem;">
+                    Build your first flashcard deck in minutes. Learn, practice, and test — everything you need to go from studying to truly knowing the material.
                 </p>
 
-                <div class="d-flex flex-wrap gap-3 fade-up-4">
-                    <a href="#" class="btn btn-teal btn-lg rounded-3 px-4">
-                        <i class="bi bi-play-fill text-white"></i> Get Started
-                    </a>
-                    <a href="#fc-features" class="btn btn-outline-teal btn-lg rounded-3 px-4 border border-2">
-                        <i class="bi bi-grid-1x2"></i> See Features
-                    </a>
+                <div class="d-flex flex-wrap gap-3 justify-content-center mb-5">
+                    <a href="#" class="btn-cta"><i class="bi bi-play-fill text-white"></i> Create Your First Deck</a>
+                    <a href="#fc-features" class="btn-cta-ghost"><i class="bi bi-eye text-white"></i> Explore Features</a>
                 </div>
 
-                <!-- stats -->
-                <div class="d-flex flex-wrap align-items-center gap-4 mt-5 fade-up-5">
-                    <div>
-                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">3</div>
-                        <div class="text-slate small fw-medium mt-1">Study Modes</div>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div>
-                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">100</div>
-                        <div class="text-slate small fw-medium mt-1">Items per Exam</div>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div>
-                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">CSV</div>
-                        <div class="text-slate small fw-medium mt-1">Bulk Import</div>
-                    </div>
-                </div>
-            </div>
+                <hr style="border-color:rgba(255,255,255,.1);">
 
-            <!-- visual -->
-            <div class="col-lg-6 d-flex justify-content-center fade-up-2">
-                <div class="card-stack">
-                    <div class="card-shadow card-shadow-2"></div>
-                    <div class="card-shadow card-shadow-1"></div>
-                    <div class="flip-wrap" onclick="heroFlip()">
-                        <div class="flip-inner" id="heroFlipInner">
-                            <div class="fc-face fc-front">
-                                <div class="fc-label text-teal">Question</div>
-                                <div class="fc-question text-teal-deep">What is Flashcards?</div>
-                                <div class="d-flex align-items-center gap-1 mt-3 text-slate" style="font-size:.72rem;">
-                                    <i class="bi bi-arrow-repeat"></i> Click to reveal answer
-                                </div>
-                            </div>
-                            <div class="fc-face fc-back">
-                                <div class="fc-label text-white">Answer</div>
-                                <div class="fc-question text-white">Flashcards is a tool that makes learning fun and efficient!</div>
-                                <div class="d-flex align-items-center gap-1 mt-3 text-white opacity-50" style="font-size:.72rem;">
-                                    <i class="bi bi-arrow-repeat"></i> Click to flip back
-                                </div>
-                            </div>
+                <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                    <div class="d-flex align-items-center gap-3 rounded-3 p-3" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);min-width:170px;flex:1 1 170px;max-width:220px;">
+                        <div class="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0" style="width:38px;height:38px;background:rgba(58,175,169,.3);color:#7ECFCB;font-size:1.1rem;">
+                            <i class="bi bi-book-half"></i>
+                        </div>
+                        <div class="text-start">
+                            <div class="text-white fw-bold small">Learn Mode</div>
+                            <div style="font-size:.73rem;color:#64748B;">Flip-through cards</div>
                         </div>
                     </div>
-                    <!-- chips -->
-                    <div class="hero-chip d-flex align-items-center gap-2 chip-1">
-                        <span class="d-flex align-items-center justify-content-center rounded-2 bg-teal-light text-teal" style="width:28px;height:28px;font-size:.85rem;"><i class="bi bi-book-half"></i></span>
-                        Learn
+                    <div class="d-flex align-items-center gap-3 rounded-3 p-3" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);min-width:170px;flex:1 1 170px;max-width:220px;">
+                        <div class="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0" style="width:38px;height:38px;background:rgba(5,150,105,.3);color:#6EE7B7;font-size:1.1rem;">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+                        <div class="text-start">
+                            <div class="text-white fw-bold small">Practice Mode</div>
+                            <div style="font-size:.73rem;color:#64748B;">10-item quick quiz</div>
+                        </div>
                     </div>
-                    <div class="hero-chip d-flex align-items-center gap-2 chip-2">
-                        <span class="d-flex align-items-center justify-content-center rounded-2" style="width:28px;height:28px;font-size:.85rem;background:#ECFDF5;color:#059669;"><i class="bi bi-pencil-square"></i></span>
-                        Practice
-                    </div>
-                    <div class="hero-chip d-flex align-items-center gap-2 chip-3">
-                        <span class="d-flex align-items-center justify-content-center rounded-2" style="width:28px;height:28px;font-size:.85rem;background:#FFF7ED;color:#EA580C;"><i class="bi bi-clipboard-check"></i></span>
-                        Test
+                    <div class="d-flex align-items-center gap-3 rounded-3 p-3" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);min-width:170px;flex:1 1 170px;max-width:220px;">
+                        <div class="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0" style="width:38px;height:38px;background:rgba(234,88,12,.3);color:#FED7AA;font-size:1.1rem;">
+                            <i class="bi bi-clipboard-check"></i>
+                        </div>
+                        <div class="text-start">
+                            <div class="text-white fw-bold small">Test Mode</div>
+                            <div style="font-size:.73rem;color:#64748B;">100-item full exam</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </section>
+
+
 <script>
     function heroFlip() {
-        document.getElementById("heroFlipInner").classList.toggle("flipped");
+        document.getElementById('heroFlipInner').classList.toggle('flipped');
+    }
+
+    function learnFlip() {
+        document.getElementById('learnCard').classList.toggle('flipped');
+    }
+
+    function switchTab(id, btn) {
+        document.querySelectorAll('.feat-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.feat-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('panel-' + id).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    function switchMethod(id, btn) {
+        document.querySelectorAll('.method-panel').forEach(p => p.classList.remove('active'));
+        // reset tab styles
+        document.querySelectorAll('[id^="tab-"]').forEach(t => {
+            t.classList.remove('btn-white', 'shadow-sm', 'text-teal-deep');
+            t.classList.add('btn-transparent', 'text-slate');
+        });
+        document.getElementById('method-' + id).classList.add('active');
+        btn.classList.remove('btn-transparent', 'text-slate');
+        btn.classList.add('btn-white', 'shadow-sm', 'text-teal-deep');
+    }
+
+    function pracSelect(el, result) {
+        el.closest('.feat-panel').querySelectorAll('.prac-option').forEach(o => o.classList.remove('correct', 'wrong'));
+        el.classList.add(result);
     }
 </script>
+
+</body>
+
+</html>
