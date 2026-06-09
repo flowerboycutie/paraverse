@@ -685,7 +685,7 @@
                 </p>
 
                 <div class="d-flex flex-wrap gap-3 fade-up-4">
-                    <a href="#" class="btn btn-teal btn-lg rounded-3 px-4">
+                    <a href="#fc-features" class="btn btn-teal btn-lg rounded-3 px-4 border border-2 border-teal">
                         <i class="bi bi-play-fill text-white"></i> Get Started
                     </a>
                     <a href="#fc-features" class="btn btn-outline-teal btn-lg rounded-3 px-4 border border-2">
