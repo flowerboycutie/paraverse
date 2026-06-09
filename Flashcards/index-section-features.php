@@ -704,19 +704,10 @@
                         </div>
                         <div class="col-lg-7 border-start d-flex">
                             <div class="w-100 p-4 p-lg-5 bg-teal-light d-flex flex-column align-items-center justify-content-center">
-                                <div class="w-100 mb-3" style="max-width:300px;">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span class="text-slate small fw-semibold">Card 5 of 12</span>
-                                        <span class="text-teal small fw-bold">40%</span>
-                                    </div>
-                                    <div class="progress rounded-pill" style="height:6px;background:#9ED8D5;">
-                                        <div class="progress-bar bg-teal rounded-pill" style="width:40%;"></div>
-                                    </div>
-                                </div>
                                 <div class="lv-card w-100" style="max-width:300px;" onclick="learnFlip()">
                                     <div class="lv-inner" id="learnCard">
                                         <div class="lv-face lv-front">
-                                            <div class="lv-tag text-teal">Question</div>
+                                            <div class="lv-tag text-teal">Sample Card Question</div>
                                             <div class="text-center fw-bold text-teal-deep" style="font-size:.95rem;">What layer does IP operate on in the OSI model?</div>
                                         </div>
                                         <div class="lv-face lv-back">
@@ -724,15 +715,6 @@
                                             <div class="text-center fw-bold text-white" style="font-size:.95rem;">Layer 3 — the Network Layer</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="text-slate small mt-3 mb-2">Click the card to flip it</div>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-white border border-teal-mid text-teal rounded-circle d-flex align-items-center justify-content-center" style="width:38px;height:38px;">
-                                        <i class="bi bi-arrow-left"></i>
-                                    </button>
-                                    <button class="btn btn-white border border-teal-mid text-teal rounded-circle d-flex align-items-center justify-content-center" style="width:38px;height:38px;">
-                                        <i class="bi bi-arrow-right"></i>
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -772,8 +754,7 @@
                         <div class="col-lg-7 border-start d-flex">
                             <div class="w-100 p-4 p-lg-5 d-flex flex-column justify-content-center gap-3" style="background:#ECFDF5;">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <span class="fw-bold" style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#059669;">Practice Quiz</span>
-                                    <span class="text-slate small fw-semibold">Question 3 of 10</span>
+                                    <span class="fw-bold" style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#059669;">Sample Practice Quiz Question</span>
                                 </div>
                                 <p class="fw-bold text-teal-deep mb-0">Which protocol is used to assign IP addresses automatically?</p>
                                 <div class="prac-option d-flex align-items-center gap-3 p-3 rounded-3 bg-white border" style="border-color:#D1FAE5 !important;" onclick="pracSelect(this,'wrong')">
@@ -830,15 +811,8 @@
                         <div class="col-lg-7 border-start d-flex">
                             <div class="w-100 p-4 p-lg-5 d-flex flex-column justify-content-center" style="background:#FFF7ED;">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <span class="fw-bold" style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#EA580C;">Exam Mode</span>
-                                    <div class="d-flex align-items-center gap-2 bg-white rounded-pill px-3 py-1 border fw-bold small text-teal-deep" style="border-color:#FED7AA !important;">
-                                        <i class="bi bi-clock" style="color:#EA580C;"></i> 42:17
-                                    </div>
+                                    <span class="fw-bold" style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#EA580C;">Sample Test Mode Question</span>
                                 </div>
-                                <div class="progress rounded-pill mb-1" style="height:8px;background:#FDDCAE;">
-                                    <div class="progress-bar rounded-pill" style="width:28%;background:#EA580C;"></div>
-                                </div>
-                                <div class="text-slate mb-4" style="font-size:.72rem;font-weight:500;">28 of 100 answered</div>
                                 <div class="d-flex align-items-center gap-3 bg-white rounded-3 border p-2 px-3 mb-2" style="border-color:#FED7AA !important;">
                                     <span class="d-flex align-items-center justify-content-center rounded-circle fw-bold flex-shrink-0" style="width:26px;height:26px;font-size:.72rem;background:#EA580C;color:#fff;border:1px solid #EA580C;">1</span>
                                     <span class="small fw-medium text-teal-deep">What is ARP used for?</span>
