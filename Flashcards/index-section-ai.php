@@ -18,6 +18,33 @@
         font-family: var(--font);
     }
 
+    /* Wider spacing and improved readability for this section */
+    #fc-ai .app-container,
+    #fc-ai .container-xxl {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+
+        #fc-ai .app-container,
+        #fc-ai .container-xxl {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    #fc-ai p,
+    #fc-ai .text-slate {
+        line-height: 1.75 !important;
+    }
+
+    #fc-ai .ai-card,
+    #fc-ai .feature-item {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+
     .text-teal {
         color: var(--fc-teal) !important;
     }
@@ -196,17 +223,23 @@
         background: var(--fc-teal-light);
         border: 1px solid var(--fc-teal-mid);
         border-radius: 12px;
-        padding: 12px 16px;
+        padding: 10px 12px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
+        gap: 8px;
+        min-height: 44px;
     }
 
     .prompt-inline-text {
         font-size: .85rem;
         color: var(--fc-teal-deep);
         font-weight: 500;
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .prompt-cursor {
@@ -245,6 +278,17 @@
         align-items: center;
         gap: 5px;
         white-space: nowrap;
+    }
+
+    .prompt-upload-btn {
+        --btn-h: 34px;
+        height: var(--btn-h);
+        padding: 6px 10px;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-size: .78rem;
     }
 
     /* ── Processing bar (slide 2) ── */
@@ -448,6 +492,8 @@
                     You stay in control — review every generated card, edit anything that doesn't fit, and add the deck to your collection with one click. The same Learn, Practice, and Test modes work on AI-generated decks too.
                 </p>
 
+                <!-- upload moved into prompt box below -->
+
                 <div class="ai-disclaimer">
                     <i class="bi bi-info-circle flex-shrink-0 text-teal mt-1"></i>
                     <span>AI card generation is an upcoming feature and is not yet available. This functionality is still being finalized and details are subject to change.</span>
@@ -468,11 +514,15 @@
                                 <div class="ai-step-title">Type your prompt</div>
                                 <p class="ai-step-body">Describe the topic, subject, or scope you want to study. Be as broad or specific as you need — the AI adapts to your input.</p>
                                 <div class="prompt-inline">
-                                    <div class="prompt-inline-text">
+                                    <div class="prompt-inline-text" id="promptInlineText">
                                         Generate flashcards about OSI model layers<span class="prompt-cursor"></span>
                                     </div>
-                                    <div class="prompt-inline-btn">
-                                        <i class="bi bi-stars text-white"></i> Generate
+                                    <div style="display:flex;align-items:center;gap:8px;">
+                                        <input id="aiFileInput" type="file" accept=".txt,.md,.csv" style="display:none;" />
+                                        <button class="btn btn-outline-teal btn-sm prompt-upload-btn" onclick="document.getElementById('aiFileInput').click();">Upload</button>
+                                        <button class="prompt-inline-btn" id="aiUploadBtn" onclick="aiUploadGenerate()">
+                                            <i class="bi bi-stars text-white"></i> Generate
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -601,5 +651,51 @@
             var diff = startX - e.changedTouches[0].clientX;
             if (Math.abs(diff) > 40) diff > 0 ? window.aiNext() : window.aiPrev();
         });
+
+        // File upload generate: read text files and advance carousel to processing/review
+        window.aiUploadGenerate = function() {
+            var input = document.getElementById('aiFileInput');
+            var promptTextEl = document.getElementById('promptInlineText');
+            var placeholder = 'Generate flashcards about OSI model layers';
+
+            // if a file is selected, read it and simulate generation; otherwise use prompt text
+            if (input.files && input.files[0]) {
+                var file = input.files[0];
+                promptTextEl.textContent = file.name;
+                aiGoTo(1); // processing
+                var reader = new FileReader();
+                reader.onerror = function() {
+                    alert('Could not read file.');
+                };
+                reader.onload = function(e) {
+                    // content = e.target.result; // could be passed to server later
+                    setTimeout(function() {
+                        aiGoTo(2);
+                    }, 900);
+                };
+                reader.readAsText(file);
+                return;
+            }
+
+            // no file — simulate prompt generation
+            var text = (promptTextEl && promptTextEl.textContent && promptTextEl.textContent !== placeholder) ? promptTextEl.textContent : placeholder;
+            aiGoTo(1);
+            setTimeout(function() {
+                aiGoTo(2);
+            }, 1200);
+        };
+
+        // show selected filename inside the prompt box when user picks a file
+        var fileInputEl = document.getElementById('aiFileInput');
+        if (fileInputEl) {
+            fileInputEl.addEventListener('change', function() {
+                var el = document.getElementById('promptInlineText');
+                if (fileInputEl.files && fileInputEl.files[0]) {
+                    el.textContent = fileInputEl.files[0].name;
+                } else {
+                    el.textContent = 'Generate flashcards about OSI model layers';
+                }
+            });
+        }
     })();
 </script>

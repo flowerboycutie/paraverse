@@ -696,18 +696,18 @@
                 <!-- stats -->
                 <div class="d-flex flex-wrap align-items-center gap-4 mt-5 fade-up-5">
                     <div>
-                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">3</div>
-                        <div class="text-slate small fw-medium mt-1">Study Modes</div>
+                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">50+</div>
+                        <div class="text-slate small fw-medium mt-1">Modules</div>
                     </div>
                     <div class="stat-divider"></div>
                     <div>
-                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">100</div>
-                        <div class="text-slate small fw-medium mt-1">Items per Exam</div>
+                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">500+</div>
+                        <div class="text-slate small fw-medium mt-1">Users</div>
                     </div>
                     <div class="stat-divider"></div>
                     <div>
-                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">CSV</div>
-                        <div class="text-slate small fw-medium mt-1">Bulk Import</div>
+                        <div class="fw-bold text-teal-deep" style="font-size:1.55rem;letter-spacing:-.03em;line-height:1;">1000+</div>
+                        <div class="text-slate small fw-medium mt-1">Flashcards</div>
                     </div>
                 </div>
             </div>

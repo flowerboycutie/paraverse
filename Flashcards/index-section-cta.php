@@ -18,6 +18,31 @@
         font-family: var(--font);
     }
 
+    /* Wider spacing and improved readability for this section */
+    #fc-cta .app-container,
+    #fc-cta .container-xxl {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+
+        #fc-cta .app-container,
+        #fc-cta .container-xxl {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    #fc-cta p,
+    #fc-cta .text-slate {
+        line-height: 1.7 !important;
+    }
+
+    #fc-cta .cta-card {
+        padding: 1.75rem !important;
+    }
+
     /* ── Utility overrides & Bootstrap gap-fills ── */
     .text-teal {
         color: var(--fc-teal) !important;
@@ -652,7 +677,7 @@
                     <i class="bi bi-stars"></i> Start Reviewing Today
                 </span>
 
-                <h2 class="cta-heading text-white mb-3">
+                <h2 class="cta-heading text-white mb-5">
                     Ready to actually<br>
                     <span style="color:var(--fc-amber);">remember</span> what you study?
                 </h2>

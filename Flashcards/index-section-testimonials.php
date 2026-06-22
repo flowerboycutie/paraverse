@@ -18,6 +18,68 @@
         font-family: var(--font);
     }
 
+    /* Wider spacing and improved readability for this section */
+    #fc-testimonials .container,
+    #fc-testimonials .app-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+
+        #fc-testimonials .container,
+        #fc-testimonials .app-container {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+
+        #fc-testimonials .container,
+        #fc-testimonials .app-container {
+            padding-left: 4.5rem;
+            padding-right: 4.5rem;
+        }
+    }
+
+    #fc-testimonials p,
+    #fc-testimonials .text-slate {
+        line-height: 1.85 !important;
+        font-size: 1rem;
+    }
+
+    /* Make testimonial cards airier: larger padding, more gap, bigger text */
+    #fc-testimonials .testimonial-card {
+        padding: 2rem !important;
+        gap: 1.25rem !important;
+    }
+
+    /* Slightly larger paragraph text inside cards */
+    #fc-testimonials .testimonial-card p {
+        font-size: 1.02rem;
+        line-height: 1.9;
+    }
+
+    /* Bigger author avatar and name for better balance */
+    #fc-testimonials .testimonial-card .rounded-circle {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 1rem !important;
+        line-height: 48px !important;
+    }
+
+    #fc-testimonials .testimonial-card .fw-bold.small,
+    #fc-testimonials .testimonial-card .fw-bold.text-teal-deep.small {
+        font-size: .95rem !important;
+    }
+
+    /* Increase the grid gutters in this section for more whitespace */
+    #fc-testimonials .row {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 1.75rem;
+    }
+
     /* ── Utility overrides & Bootstrap gap-fills ── */
     .text-teal {
         color: var(--fc-teal) !important;

@@ -18,6 +18,43 @@
         font-family: var(--font);
     }
 
+    /* Wider spacing and improved readability for this section */
+    #fc-features .app-container,
+    #fc-features .container-xxl {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+
+        #fc-features .app-container,
+        #fc-features .container-xxl {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+
+        #fc-features .app-container,
+        #fc-features .container-xxl {
+            padding-left: 4.5rem;
+            padding-right: 4.5rem;
+        }
+    }
+
+    #fc-features p,
+    #fc-features .text-slate {
+        line-height: 1.7 !important;
+    }
+
+    #fc-features .card,
+    #fc-features .d-flex.align-items-center.justify-content-between,
+    #fc-features .feature-item {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+
     /* ── Utility overrides & Bootstrap gap-fills ── */
     .text-teal {
         color: var(--fc-teal) !important;
@@ -410,7 +447,8 @@
 
     /* flip card inside features */
     .lv-card {
-        height: 160px;
+        height: 260px;
+        max-width: 520px;
         perspective: 800px;
         cursor: pointer;
     }
@@ -436,7 +474,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 16px;
+        padding: 24px;
         box-shadow: 0 6px 24px rgba(26, 60, 58, .14);
     }
 
@@ -704,15 +742,15 @@
                         </div>
                         <div class="col-lg-7 border-start d-flex">
                             <div class="w-100 p-4 p-lg-5 bg-teal-light d-flex flex-column align-items-center justify-content-center">
-                                <div class="lv-card w-100" style="max-width:300px;" onclick="learnFlip()">
+                                <div class="lv-card w-100" style="max-width:520px;" onclick="learnFlip()">
                                     <div class="lv-inner" id="learnCard">
                                         <div class="lv-face lv-front">
                                             <div class="lv-tag text-teal">Sample Card Question</div>
-                                            <div class="text-center fw-bold text-teal-deep" style="font-size:.95rem;">What layer does IP operate on in the OSI model?</div>
+                                            <div class="text-center fw-bold text-teal-deep" style="font-size:1.05rem;">What layer does IP operate on in the OSI model?</div>
                                         </div>
                                         <div class="lv-face lv-back">
                                             <div class="lv-tag text-white">Answer</div>
-                                            <div class="text-center fw-bold text-white" style="font-size:.95rem;">Layer 3 — the Network Layer</div>
+                                            <div class="text-center fw-bold text-white" style="font-size:1.05rem;">Layer 3 — the Network Layer</div>
                                         </div>
                                     </div>
                                 </div>

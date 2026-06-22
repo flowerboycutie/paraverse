@@ -18,6 +18,67 @@
         font-family: var(--font);
     }
 
+    /* Wider horizontal padding for the About section (fixes "masikip") */
+    #fc-about .app-container,
+    #fc-about .container-xxl {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+
+        #fc-about .app-container,
+        #fc-about .container-xxl {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+
+        #fc-about .app-container,
+        #fc-about .container-xxl {
+            padding-left: 4.5rem;
+            padding-right: 4.5rem;
+        }
+    }
+
+    /* Increase inner spacing and readability for About section */
+    #fc-about .deck-mockup {
+        padding: 2.5rem !important;
+    }
+
+    #fc-about .deck-mockup .d-flex.align-items-center.justify-content-between {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+        gap: 1rem !important;
+    }
+
+    #fc-about p,
+    #fc-about .deck-mockup .text-slate {
+        line-height: 1.75 !important;
+    }
+
+    #fc-about .deck-mockup .fw-semibold {
+        line-height: 1.5 !important;
+    }
+
+    @media (min-width: 992px) {
+        #fc-about .deck-mockup {
+            padding: 3.5rem !important;
+        }
+
+        #fc-about .deck-mockup .d-flex.align-items-center.justify-content-between {
+            padding: 1.75rem !important;
+            margin-bottom: 1.25rem !important;
+        }
+    }
+
+    /* nudge the floating import tag further down to prevent overlap */
+    #fc-about .position-absolute.d-flex.align-items-center.gap-3 {
+        bottom: -34px !important;
+    }
+
     /* ── Utility overrides & Bootstrap gap-fills ── */
     .text-teal {
         color: var(--fc-teal) !important;
@@ -681,7 +742,7 @@
             <!-- visual -->
             <div class="col-lg-6 order-1 order-lg-2">
                 <div class="position-relative">
-                    <div class="deck-mockup bg-teal-light border p-4" style="border-color:#C5E9E7 !important;">
+                    <div class="deck-mockup bg-teal-light border p-5" style="border-color:#C5E9E7 !important;">
                         <!-- window dots -->
                         <div class="d-flex align-items-center gap-2 mb-4">
                             <span class="deck-dot" style="background:#F87171;"></span>
@@ -690,28 +751,28 @@
                             <span class="text-slate ms-2 small fw-semibold">Network+ Reviewer • 24 cards</span>
                         </div>
                         <!-- card rows -->
-                        <div class="d-flex align-items-center justify-content-between bg-white rounded-3 border p-3 mb-2">
+                        <div class="d-flex align-items-center justify-content-between bg-white rounded-3 border p-4 mb-3">
                             <div>
                                 <div class="fw-semibold text-teal-deep small">What is subnetting?</div>
                                 <div class="text-slate" style="font-size:.78rem;">Dividing a network into sub-networks…</div>
                             </div>
                             <span class="badge rounded-pill px-3 py-1 fw-bold ms-3" style="background:#ECFDF5;color:#059669;font-size:.68rem;">Done</span>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between bg-white rounded-3 border p-3 mb-2">
+                        <div class="d-flex align-items-center justify-content-between bg-white rounded-3 border p-4 mb-3">
                             <div>
                                 <div class="fw-semibold text-teal-deep small">Define MAC address</div>
                                 <div class="text-slate" style="font-size:.78rem;">Hardware identifier assigned to a NIC…</div>
                             </div>
                             <span class="badge rounded-pill px-3 py-1 fw-bold ms-3" style="background:#FFF7ED;color:#EA580C;font-size:.68rem;">Review</span>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between bg-white rounded-3 border p-3 mb-2">
+                        <div class="d-flex align-items-center justify-content-between bg-white rounded-3 border p-4 mb-3">
                             <div>
                                 <div class="fw-semibold text-teal-deep small">What is DHCP used for?</div>
                                 <div class="text-slate" style="font-size:.78rem;">Auto-assigns IP addresses to devices…</div>
                             </div>
                             <span class="badge rounded-pill px-3 py-1 fw-bold ms-3 bg-teal-light text-teal" style="font-size:.68rem;">New</span>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between bg-white rounded-3 border p-3">
+                        <div class="d-flex align-items-center justify-content-between bg-white rounded-3 border p-4">
                             <div>
                                 <div class="fw-semibold text-teal-deep small">Difference: TCP vs UDP</div>
                                 <div class="text-slate" style="font-size:.78rem;">TCP is connection-oriented; UDP is…</div>
@@ -722,7 +783,7 @@
 
                     <!-- floating tag -->
                     <div class="position-absolute d-flex align-items-center gap-3 rounded-3 p-3 shadow-lg bg-teal-deep text-white"
-                        style="bottom:-18px;right:-10px;font-size:.82rem;font-weight:600;animation:float 2.8s ease-in-out infinite;">
+                        style="bottom:-26px;right:-10px;font-size:.82rem;font-weight:600;animation:float 2.8s ease-in-out infinite;">
                         <div class="d-flex align-items-center justify-content-center rounded-2" style="width:32px;height:32px;background:rgba(255,255,255,.12);font-size:1rem;">
                             <i class="bi bi-file-earmark-spreadsheet"></i>
                         </div>

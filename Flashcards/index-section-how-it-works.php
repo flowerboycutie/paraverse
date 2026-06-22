@@ -18,6 +18,41 @@
         font-family: var(--font);
     }
 
+    /* Wider spacing and improved readability for this section */
+    #fc-how-it-works .app-container,
+    #fc-how-it-works .container-xxl {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+
+        #fc-how-it-works .app-container,
+        #fc-how-it-works .container-xxl {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+
+        #fc-how-it-works .app-container,
+        #fc-how-it-works .container-xxl {
+            padding-left: 4.5rem;
+            padding-right: 4.5rem;
+        }
+    }
+
+    #fc-how-it-works p,
+    #fc-how-it-works .text-slate {
+        line-height: 1.75 !important;
+    }
+
+    #fc-how-it-works .step-card,
+    #fc-how-it-works .step-num {
+        padding: 1.25rem !important;
+    }
+
     /* ── Utility overrides & Bootstrap gap-fills ── */
     .text-teal {
         color: var(--fc-teal) !important;
