@@ -18,6 +18,17 @@
         font-family: var(--font);
     }
 
+    /* Slightly larger type for improved readability in this section */
+    #fc-how-it-works {
+        font-size: 1.03rem;
+    }
+
+    #fc-how-it-works p,
+    #fc-how-it-works .text-slate {
+        font-size: 1rem !important;
+        line-height: 1.78 !important;
+    }
+
     /* Wider spacing and improved readability for this section */
     #fc-how-it-works .app-container,
     #fc-how-it-works .container-xxl {

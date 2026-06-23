@@ -18,6 +18,17 @@
         font-family: var(--font);
     }
 
+    /* Slightly larger type for improved readability in this section */
+    #fc-about {
+        font-size: 1.03rem;
+    }
+
+    #fc-about p,
+    #fc-about .text-slate {
+        font-size: 1rem !important;
+        line-height: 1.78 !important;
+    }
+
     /* Wider horizontal padding for the About section (fixes "masikip") */
     #fc-about .app-container,
     #fc-about .container-xxl {

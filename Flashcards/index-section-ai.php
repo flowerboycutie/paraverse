@@ -18,6 +18,18 @@
         font-family: var(--font);
     }
 
+    /* Slightly larger type for improved readability in this section */
+    #fc-ai {
+        font-size: 1.03rem;
+    }
+
+    #fc-ai p,
+    #fc-ai .text-slate,
+    #fc-ai .prompt-inline-text {
+        font-size: 1rem !important;
+        line-height: 1.78 !important;
+    }
+
     /* Wider spacing and improved readability for this section */
     #fc-ai .app-container,
     #fc-ai .container-xxl {

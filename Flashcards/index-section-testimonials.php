@@ -80,6 +80,62 @@
         --bs-gutter-y: 1.75rem;
     }
 
+    /* Redesigned testimonial card visuals */
+    .testimonial-card {
+        padding: 2.25rem !important;
+        gap: 1.25rem !important;
+        position: relative;
+        background: linear-gradient(180deg, #ffffff, #fbfdfe);
+        border: 1px solid rgba(15, 23, 42, .04);
+        border-left: 6px solid var(--fc-teal-mid);
+        transition: box-shadow .25s, transform .2s;
+    }
+
+    .testimonial-module {
+        position: absolute;
+        top: -14px;
+        left: 1.5rem;
+        display: inline-block;
+        font-size: .78rem;
+        font-weight: 800;
+        color: #fff !important;
+        background: var(--fc-teal);
+        padding: 6px 12px;
+        border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(26, 60, 58, .06);
+    }
+
+    .testimonial-rating i {
+        color: #F59E0B;
+        font-size: .95rem;
+    }
+
+    .testimonial-quote {
+        font-size: 1.03rem;
+        font-style: italic;
+        margin: .25rem 0 1rem;
+        color: #0f172a;
+    }
+
+    .author-block {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-top: 8px;
+    }
+
+    .testimonial-card .rounded-circle {
+        width: 56px !important;
+        height: 56px !important;
+        font-size: 1.05rem !important;
+        line-height: 56px !important;
+    }
+
+    .author-name {
+        font-weight: 700;
+        color: var(--fc-teal-deep);
+    }
+
     /* ── Utility overrides & Bootstrap gap-fills ── */
     .text-teal {
         color: var(--fc-teal) !important;
@@ -745,14 +801,15 @@
                         <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                         <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                     </div>
+                    <div class="testimonial-module">Module: OSI Model</div>
                     <p class="text-slate lh-lg mb-0" style="font-size:.95rem;">
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio autem blanditiis minus aspernatur, facere aliquam."
+                        "The OSI breakdown and flashcard prompts made memorizing each layer fast — concise and exam-focused."
                     </p>
                     <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
                         <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0 bg-teal" style="width:40px;height:40px;font-size:.9rem;">JR</div>
                         <div>
-                            <div class="fw-bold text-teal-deep small">Juan Reyes</div>
-                            <div class="text-slate" style="font-size:.78rem;">BS Computer Science, Year 3</div>
+                            <div class="fw-bold text-teal-deep">Juan Reyes</div>
+                            <div class="text-slate" style="font-size:.78rem;">BS Computer Science</div>
                         </div>
                     </div>
                 </div>
@@ -768,14 +825,15 @@
                         <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                         <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                     </div>
+                    <div class="testimonial-module">Module: Database Systems</div>
                     <p class="lh-lg mb-0" style="font-size:.95rem;color:var(--fc-teal-deep);">
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, similique! Provident officia cum dolores nihil."
+                        "Excellent SQL walkthroughs and query exercises — helped me understand joins and normalization quickly."
                     </p>
                     <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top" style="border-color:rgba(58,175,169,.2) !important;">
                         <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0" style="width:40px;height:40px;font-size:.9rem;background:var(--fc-teal-deep);">MC</div>
                         <div>
                             <div class="fw-bold small" style="color:var(--fc-teal-deep);">Maria Cruz</div>
-                            <div style="font-size:.78rem;color:var(--fc-teal);">BS Information Technology, Year 4</div>
+                            <div style="font-size:.78rem;color:var(--fc-teal);">BS Information Technology</div>
                         </div>
                     </div>
                 </div>
@@ -791,14 +849,15 @@
                         <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                         <i class="bi bi-star-half text-warning" style="font-size:.85rem;"></i>
                     </div>
+                    <div class="testimonial-module">Module: Computer Architecture</div>
                     <p class="text-slate lh-lg mb-0" style="font-size:.95rem;">
-                        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, hic. Minima accusamus nobis fuga nostrum."
+                        "Concise architecture summaries and practice questions made complex concepts much easier to recall."
                     </p>
                     <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
                         <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0 bg-teal" style="width:40px;height:40px;font-size:.9rem;">AL</div>
                         <div>
                             <div class="fw-bold text-teal-deep small">Angelo Lim</div>
-                            <div class="text-slate" style="font-size:.78rem;">BS Computer Engineering, Year 2</div>
+                            <div class="text-slate" style="font-size:.78rem;">BS Computer Engineering</div>
                         </div>
                     </div>
                 </div>
@@ -814,14 +873,15 @@
                         <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                         <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                     </div>
+                    <div class="testimonial-module">Module: Web Development</div>
                     <p class="text-slate lh-lg mb-0" style="font-size:.95rem;">
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe vero porro laboriosam illo, cumque itaque."
+                        "Practical web-dev cards with code examples — great for building hands-on skills before projects."
                     </p>
                     <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
                         <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0 bg-teal" style="width:40px;height:40px;font-size:.9rem;">SK</div>
                         <div>
                             <div class="fw-bold text-teal-deep small">Sofia Katipunan</div>
-                            <div class="text-slate" style="font-size:.78rem;">BS Information Systems, Year 3</div>
+                            <div class="text-slate" style="font-size:.78rem;">BS Information Systems</div>
                         </div>
                     </div>
                 </div>
@@ -837,14 +897,15 @@
                         <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                         <i class="bi bi-star text-warning" style="font-size:.85rem;"></i>
                     </div>
+                    <div class="testimonial-module">Module: Software Engineering</div>
                     <p class="text-slate lh-lg mb-0" style="font-size:.95rem;">
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi exercitationem minima facere, facilis sunt praesentium."
+                        "Excellent coverage of software design patterns and testing strategies — perfect for exam prep."
                     </p>
                     <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
                         <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0 bg-teal" style="width:40px;height:40px;font-size:.9rem;">RB</div>
                         <div>
                             <div class="fw-bold text-teal-deep small">Ramon Buenaventura</div>
-                            <div class="text-slate" style="font-size:.78rem;">BS Computer Science, Year 2</div>
+                            <div class="text-slate" style="font-size:.78rem;">BS Computer Science</div>
                         </div>
                     </div>
                 </div>
@@ -860,14 +921,15 @@
                         <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                         <i class="bi bi-star-fill text-warning" style="font-size:.85rem;"></i>
                     </div>
+                    <div class="testimonial-module">Module: Electronics</div>
                     <p class="text-slate lh-lg mb-0" style="font-size:.95rem;">
-                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem et ipsa, aut ducimus sed blanditiis!"
+                        "Well-structured electronics cards — clear formulas and practical tips that made review efficient."
                     </p>
                     <div class="d-flex align-items-center gap-3 mt-auto pt-3 border-top">
                         <div class="d-flex align-items-center justify-content-center rounded-circle fw-bold text-white flex-shrink-0 bg-teal" style="width:40px;height:40px;font-size:.9rem;">DP</div>
                         <div>
                             <div class="fw-bold text-teal-deep small">Daniela Pascual</div>
-                            <div class="text-slate" style="font-size:.78rem;">BS Electronics Engineering, Year 4</div>
+                            <div class="text-slate" style="font-size:.78rem;">BS Electronics Engineering</div>
                         </div>
                     </div>
                 </div>
