@@ -18,17 +18,6 @@
         font-family: var(--font);
     }
 
-    /* Slightly larger type for improved readability in this section */
-    #fc-hero {
-        font-size: 1.04rem;
-    }
-
-    #fc-hero p,
-    #fc-hero .text-slate {
-        font-size: 1rem !important;
-        line-height: 1.75 !important;
-    }
-
     /* ── Utility overrides & Bootstrap gap-fills ── */
     .text-teal {
         color: var(--fc-teal) !important;
