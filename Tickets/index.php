@@ -72,6 +72,8 @@ $META_DESC = "Create decks, practice with purpose, and test your knowledge — a
         <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
           <div class="d-flex flex-column flex-column-fluid">
             <main>
+              <?php include("ticket-admin.php"); ?>
+              <?php include("ticket-public.php"); ?>
             </main>
           </div>
           <?php include("partials/_footer.php"); ?>
