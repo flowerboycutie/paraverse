@@ -1,10 +1,3 @@
-/**
- * ticket-admin.js
- * Behavior for ticket-admin.html — renders the ticket table with
- * search, app/status filters, clickable summary cards, and
- * Complete / Cancel / Reopen actions.
- */
-
 document.addEventListener("DOMContentLoaded", () => {
     PARAVERSE_TICKETS.seedIfEmpty(); // remove this once real data comes from backend
 
@@ -22,12 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const countCancelledEl = document.getElementById("pvCountCancelled");
     const summaryCards = document.querySelectorAll(".pv-summary-card");
 
-    // --- Filter state -------------------------------------------------
     let filterApp = "All Apps";
     let filterStatus = "All";
     let searchText = "";
 
-    // Populate app filter dropdown from the shared PARAVERSE_APPS list.
     PARAVERSE_APPS.forEach((app) => {
         const option = document.createElement("option");
         option.value = app.name;
@@ -165,4 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     render();
+
+    // Auto-refresh the dashboard every 3 seconds to pick up new submissions
+    setInterval(render, 3000);
 });

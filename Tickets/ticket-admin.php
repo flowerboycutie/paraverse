@@ -1,12 +1,3 @@
-<!-- ============================================================
-  ticket-admin.html
-  Paraverse Ticketing System — admin ticket dashboard.
-  Header/footer intentionally omitted (using existing template).
-  Vanilla HTML, Bootstrap grid/utility classes, vanilla JS.
-  All custom styling is under pv- prefixed classes, scoped inside
-  .pv-admin-section, to avoid collision with Bootstrap/Metronic.
-============================================================= -->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
