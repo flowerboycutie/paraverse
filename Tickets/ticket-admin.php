@@ -1,3 +1,5 @@
+<!-- ticket-admin.php -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -364,23 +366,29 @@
         </div>
 
         <!-- Table -->
-        <div class="pv-tickets-card">
-            <div class="pv-table-wrap">
-                <table class="pv-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 60px;">#</th>
-                            <th>Paraverse app</th>
-                            <th>Submitted by</th>
-                            <th>Description</th>
-                            <th style="width: 110px;">Status</th>
-                            <th style="width: 220px;">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="pvTicketTableBody">
-                        <!-- Rows injected by ticket-admin.js -->
-                    </tbody>
-                </table>
+        <div class="card card-xl-stretch mb-xl-8">
+            <div class="card-header border-0 pt-5">
+                <h3 class="card-title align-items-start flex-column">
+                    <span class="card-label fw-bold fs-3 mb-1">Ticket list</span>
+                    <span class="text-muted mt-1 fw-semibold fs-7">All submitted Paraverse tickets</span>
+                </h3>
+            </div>
+            <div class="card-body py-3">
+                <div class="table-responsive">
+                    <table class="table align-middle gs-0 gy-3">
+                        <thead>
+                            <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                <th class="p-0 w-50px">#</th>
+                                <th class="p-0 min-w-150px">Paraverse app</th>
+                                <th class="p-0 min-w-140px">Submitted by</th>
+                                <th class="p-0 min-w-220px">Description</th>
+                                <th class="p-0 min-w-100px">Status</th>
+                                <th class="p-0 min-w-220px text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pvTicketTableBody"></tbody>
+                    </table>
+                </div>
             </div>
             <div class="pv-table-footer">
                 <span>Showing <strong id="pvVisibleCount">0</strong> of <strong id="pvTotalCount">0</strong> tickets</span>
@@ -391,5 +399,5 @@
     </div>
 </section>
 
-<script src="ticket-data.js"></script>
-<script src="ticket-admin.js"></script>
+<script src="ticket-data.js?v=<?= time() ?>"></script>
+<script src="ticket-admin.js?v=<?= time() ?>"></script>

@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderChips(appName) {
+        if (!chipsContainer || !suggestionsArea) return; // chip suggestions markup isn't present in this HTML
+
         chipsContainer.innerHTML = "";
         activeChip = null;
 
@@ -61,15 +63,29 @@ document.addEventListener("DOMContentLoaded", () => {
         suggestionsArea.style.display = "block";
     }
 
+    function showForm() {
+        formState.hidden = false;
+        successState.hidden = true;
+        formState.style.display = "";
+        successState.style.display = "none";
+    }
+
+    function showSuccess() {
+        formState.hidden = true;
+        successState.hidden = false;
+        formState.style.display = "none";
+        successState.style.display = "block";
+    }
+
     function resetForm() {
+        form.reset();
         appSelect.value = "";
         description.value = "";
-        suggestionsArea.style.display = "none";
-        chipsContainer.innerHTML = "";
+        if (suggestionsArea) suggestionsArea.style.display = "none";
+        if (chipsContainer) chipsContainer.innerHTML = "";
         activeChip = null;
         submitBtn.disabled = true;
-        successState.style.display = "none";
-        formState.style.display = "block";
+        showForm();
     }
 
     appSelect.addEventListener("change", () => {
@@ -85,17 +101,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!appSelect.value || !description.value.trim()) return;
 
-        // "Submitted By" is intentionally left out here — filled in
-        // automatically on the backend from the logged-in user.
         PARAVERSE_TICKETS.add({
             app: appSelect.value,
             description: description.value.trim(),
         });
 
         submittedApp.textContent = appSelect.value;
-        formState.style.display = "none";
-        successState.style.display = "block";
+        showSuccess();
     });
 
-    resetBtn.addEventListener("click", resetForm);
+    resetBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        resetForm();
+        const formTop = document.getElementById("pvFormState");
+        if (formTop) {
+            formTop.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    });
 });

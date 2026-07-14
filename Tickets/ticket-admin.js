@@ -1,3 +1,5 @@
+// ticket-admin.js
+
 document.addEventListener("DOMContentLoaded", () => {
     PARAVERSE_TICKETS.seedIfEmpty(); // remove this once real data comes from backend
 
@@ -6,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const appFilter = document.getElementById("pvAppFilter");
     const statusFilter = document.getElementById("pvStatusFilter");
     const resetBtn = document.getElementById("pvResetFilters");
+    // The Metronic ticket table body in ticket-admin.php
     const tableBody = document.getElementById("pvTicketTableBody");
     const visibleCountEl = document.getElementById("pvVisibleCount");
     const totalCountEl = document.getElementById("pvTotalCount");

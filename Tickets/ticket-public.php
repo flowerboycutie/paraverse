@@ -1,3 +1,5 @@
+<!-- ticket-public.php     -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -240,32 +242,34 @@
         <div class="pv-ticket-card">
 
             <!-- Form state -->
-            <div id="pvFormState">
-                <h5>Report a problem</h5>
-                <p class="pv-subtext">Select the Paraverse app you're having trouble with and describe the issue.</p>
+            <div id="pvFormState" class="card card-flush" style="border: none; box-shadow: none;">
+                <div class="card-header pt-6">
+                    <h5 class="card-title fw-bold m-0">Report a problem</h5>
+                    <p class="text-muted fs-7 mb-0">Select the Paraverse app you're having trouble with and describe the issue.</p>
+                </div>
+                <div class="card-body py-6">
+                    <form id="pvTicketForm" novalidate>
+                        <div class="fv-row mb-5">
+                            <label for="pvAppSelect" class="form-label fw-semibold">Which app has a problem?</label>
+                            <select class="form-select form-select-solid" id="pvAppSelect" required>
+                                <option value="" selected>— Select an app —</option>
+                            </select>
+                        </div>
 
-                <form id="pvTicketForm" novalidate>
+                        <div class="fv-row mb-8">
+                            <label for="pvDescription" class="form-label fw-semibold">
+                                Describe the problem <span class="text-danger">*</span>
+                            </label>
+                            <textarea
+                                class="form-control form-control-solid"
+                                id="pvDescription"
+                                placeholder="Explain what happened and what you were trying to do..."
+                                required></textarea>
+                        </div>
 
-                    <div class="pv-field">
-                        <label for="pvAppSelect" class="pv-label">Which app has a problem?</label>
-                        <select class="pv-input" id="pvAppSelect" required>
-                            <option value="" selected>— Select an app —</option>
-                        </select>
-                    </div>
-
-                    <div class="pv-field">
-                        <label for="pvDescription" class="pv-label">
-                            Describe the problem <span class="pv-required">*</span>
-                        </label>
-                        <textarea
-                            class="pv-input"
-                            id="pvDescription"
-                            placeholder="Explain what happened and what you were trying to do..."
-                            required></textarea>
-                    </div>
-
-                    <button type="submit" class="pv-submit-btn" id="pvSubmitBtn" disabled>Submit ticket</button>
-                </form>
+                        <button type="submit" class="btn btn-primary w-100" id="pvSubmitBtn" disabled>Submit ticket</button>
+                    </form>
+                </div>
             </div>
 
             <!-- Success state -->
@@ -284,5 +288,5 @@
     </div>
 </section>
 
-<script src="ticket-data.js"></script>
-<script src="ticket-public.js"></script>
+<script src="ticket-data.js?v=<?= time() ?>"></script>
+<script src="ticket-public.js?v=<?= time() ?>"></script>
