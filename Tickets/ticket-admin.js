@@ -8,7 +8,7 @@ $(function () {
     const $appFilter = $("#pvAppFilter");
     const $statusFilter = $("#pvStatusFilter");
     const $resetBtn = $("#pvResetFilters");
-    // The Metronic ticket table body in ticket-admin.php
+    const $ticketTable = $("#pvTicketTable");
     const $tableBody = $("#pvTicketTableBody");
     const $visibleCountEl = $("#pvVisibleCount");
     const $totalCountEl = $("#pvTotalCount");
@@ -21,6 +21,35 @@ $(function () {
     let filterApp = "All Apps";
     let filterStatus = "All";
     let searchText = "";
+    let ticketDataTable = null;
+
+    function initializeTicketTable() {
+        if (ticketDataTable || typeof $.fn.DataTable !== "function") {
+            return;
+        }
+
+        ticketDataTable = $ticketTable.DataTable({
+            ordering: true,
+            order: [[0, "asc"]],
+            pageLength: 10,
+            lengthChange: false,
+            searching: false,
+            info: false,
+            autoWidth: false,
+            dom: "t",
+            language: {
+                emptyTable: "No tickets match your filters."
+            },
+            columns: [
+                { data: "index", className: "pv-id-cell" },
+                { data: "app" },
+                { data: "submittedBy", className: "pv-submitted-cell" },
+                { data: "description", className: "pv-desc-cell" },
+                { data: "statusHtml", className: "pv-status-badge-cell" },
+                { data: "actions", className: "pv-action-cell text-end", orderable: false, searchable: false }
+            ]
+        });
+    }
 
     PARAVERSE_APPS.forEach((app) => {
         const $option = $("<option></option>");
@@ -78,12 +107,28 @@ $(function () {
         updateSummaryCounts(allTickets);
         $visibleCountEl.text(visible.length);
 
-        if (visible.length === 0) {
-            $tableBody.html(`<tr class="pv-empty-row"><td colspan="6">No tickets match your filters.</td></tr>`);
+        initializeTicketTable();
+
+        if (ticketDataTable) {
+            const rows = visible.map((ticket, index) => ({
+                index: `#${index + 1}`,
+                app: `<span class="pv-app-badge">${ticket.app}</span>`,
+                submittedBy: ticket.submittedBy,
+                description: ticket.description,
+                statusHtml: `<span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${ticket.status}</span>`,
+                actions: actionButtonsHtml(ticket),
+                id: ticket.id,
+            }));
+
+            ticketDataTable.clear();
+            ticketDataTable.rows.add(rows).draw(false);
         } else {
-            $tableBody.html(
-                visible
-                    .map((ticket, index) => `
+            if (visible.length === 0) {
+                $tableBody.html(`<tr class="pv-empty-row"><td colspan="6">No tickets match your filters.</td></tr>`);
+            } else {
+                $tableBody.html(
+                    visible
+                        .map((ticket, index) => `
           <tr>
             <td class="pv-id-cell">#${index + 1}</td>
             <td><span class="pv-app-badge">${ticket.app}</span></td>
@@ -93,8 +138,9 @@ $(function () {
             <td class="pv-action-cell">${actionButtonsHtml(ticket)}</td>
           </tr>
         `)
-                    .join("")
-            );
+                        .join("")
+                );
+            }
         }
 
         $lastUpdatedEl.text("Last updated: " + new Date().toLocaleDateString("en-US", {

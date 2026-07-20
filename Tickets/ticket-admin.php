@@ -3,6 +3,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
 
 <style>
     .pv-admin-section,
@@ -375,7 +376,7 @@
             </div>
             <div class="card-body py-3">
                 <div class="table-responsive">
-                    <table class="table align-middle gs-0 gy-3">
+                    <table id="pvTicketTable" class="table align-middle gs-0 gy-3">
                         <thead>
                             <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                 <th class="p-0 w-50px">#</th>
@@ -399,5 +400,6 @@
     </div>
 </section>
 
+<script src="/assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="ticket-data.js?v=<?= time() ?>"></script>
 <script src="ticket-admin.js?v=<?= time() ?>"></script>
