@@ -1,3 +1,5 @@
+<!-- index.php -->
+
 <?php
 
 define('MBG', TRUE);

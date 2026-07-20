@@ -1,121 +1,118 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const appSelect = document.getElementById("pvAppSelect");
-    const description = document.getElementById("pvDescription");
-    const submitBtn = document.getElementById("pvSubmitBtn");
-    const chipsContainer = document.getElementById("pvChipsContainer");
-    const suggestionsArea = document.getElementById("pvSuggestionsArea");
-    const formState = document.getElementById("pvFormState");
-    const successState = document.getElementById("pvSuccessState");
-    const submittedApp = document.getElementById("pvSubmittedApp");
-    const resetBtn = document.getElementById("pvResetBtn");
-    const form = document.getElementById("pvTicketForm");
+// ticket-public.js
+
+$(function () {
+    const $appSelect = $("#pvAppSelect");
+    const $description = $("#pvDescription");
+    const $submitBtn = $("#pvSubmitBtn");
+    const $chipsContainer = $("#pvChipsContainer");
+    const $suggestionsArea = $("#pvSuggestionsArea");
+    const $formState = $("#pvFormState");
+    const $successState = $("#pvSuccessState");
+    const $submittedApp = $("#pvSubmittedApp");
+    const $resetBtn = $("#pvResetBtn");
+    const $form = $("#pvTicketForm");
 
     let activeChip = null;
 
     PARAVERSE_APPS.forEach((app) => {
-        const option = document.createElement("option");
-        option.value = app.name;
-        option.textContent = app.name;
-        appSelect.appendChild(option);
+        const $option = $("<option></option>");
+        $option.val(app.name).text(app.name);
+        $appSelect.append($option);
     });
 
     function checkReady() {
-        submitBtn.disabled = !(appSelect.value && description.value.trim());
+        $submitBtn.prop("disabled", !($appSelect.val() && $description.val().trim()));
     }
 
     function renderChips(appName) {
-        if (!chipsContainer || !suggestionsArea) return; // chip suggestions markup isn't present in this HTML
+        if (!$chipsContainer.length || !$suggestionsArea.length) return;
 
-        chipsContainer.innerHTML = "";
+        $chipsContainer.empty();
         activeChip = null;
 
         const app = PARAVERSE_APPS.find((a) => a.name === appName);
         const suggestions = app ? app.examples : [];
 
         if (!suggestions.length) {
-            suggestionsArea.style.display = "none";
+            $suggestionsArea.hide();
             return;
         }
 
         suggestions.forEach((text) => {
-            const chip = document.createElement("button");
-            chip.type = "button";
-            chip.className = "pv-chip";
-            chip.textContent = text;
+            const $chip = $("<button type=\"button\"></button>");
+            $chip.addClass("pv-chip").text(text);
 
-            chip.addEventListener("click", () => {
-                if (activeChip) activeChip.classList.remove("pv-active");
+            $chip.on("click", function () {
+                if (activeChip) {
+                    $(activeChip).removeClass("pv-active");
+                }
 
-                if (activeChip === chip) {
+                if (activeChip === this) {
                     activeChip = null;
-                    description.value = "";
+                    $description.val("");
                 } else {
-                    chip.classList.add("pv-active");
-                    activeChip = chip;
-                    description.value = text;
+                    $(this).addClass("pv-active");
+                    activeChip = this;
+                    $description.val(text);
                 }
                 checkReady();
             });
 
-            chipsContainer.appendChild(chip);
+            $chipsContainer.append($chip);
         });
 
-        suggestionsArea.style.display = "block";
+        $suggestionsArea.show();
     }
 
     function showForm() {
-        formState.hidden = false;
-        successState.hidden = true;
-        formState.style.display = "";
-        successState.style.display = "none";
+        $formState.show();
+        $successState.hide();
     }
 
     function showSuccess() {
-        formState.hidden = true;
-        successState.hidden = false;
-        formState.style.display = "none";
-        successState.style.display = "block";
+        $formState.hide();
+        $successState.show();
     }
 
     function resetForm() {
-        form.reset();
-        appSelect.value = "";
-        description.value = "";
-        if (suggestionsArea) suggestionsArea.style.display = "none";
-        if (chipsContainer) chipsContainer.innerHTML = "";
+        $form[0].reset();
+        $appSelect.val("");
+        $description.val("");
+        $suggestionsArea.hide();
+        $chipsContainer.empty();
         activeChip = null;
-        submitBtn.disabled = true;
+        $submitBtn.prop("disabled", true);
         showForm();
     }
 
-    appSelect.addEventListener("change", () => {
-        description.value = "";
-        renderChips(appSelect.value);
+    $appSelect.on("change", function () {
+        $description.val("");
+        renderChips($appSelect.val());
         checkReady();
     });
 
-    description.addEventListener("input", checkReady);
+    $description.on("input", checkReady);
 
-    form.addEventListener("submit", (e) => {
+    $form.on("submit", function (e) {
         e.preventDefault();
 
-        if (!appSelect.value || !description.value.trim()) return;
+        if (!$appSelect.val() || !$description.val().trim()) return;
 
         PARAVERSE_TICKETS.add({
-            app: appSelect.value,
-            description: description.value.trim(),
+            app: $appSelect.val(),
+            description: $description.val().trim(),
         });
 
-        submittedApp.textContent = appSelect.value;
+        $submittedApp.text($appSelect.val());
         showSuccess();
     });
 
-    resetBtn.addEventListener("click", (e) => {
+    $resetBtn.on("click", function (e) {
         e.preventDefault();
         resetForm();
-        const formTop = document.getElementById("pvFormState");
-        if (formTop) {
-            formTop.scrollIntoView({ behavior: "smooth", block: "start" });
+        const $formTop = $("#pvFormState");
+        if ($formTop.length) {
+            $formTop[0].scrollIntoView({ behavior: "smooth", block: "start" });
         }
     });
 });
