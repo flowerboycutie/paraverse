@@ -34,6 +34,17 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
         CANCELLED: "Cancelled",
     };
 
+    // Role values shown as a badge under the submitter's name in the
+    // admin table. Extend this if Paraverse has more roles than these two.
+    window.USER_ROLE = {
+        STUDENT: "Student",
+        ASSOCIATE: "Associate",
+    };
+
+    // Placeholder avatar shown when a ticket has no specific avatar set.
+    // Swap for wherever real user profile pictures live once wired up.
+    window.DEFAULT_AVATAR = "/assets/img/default.png";
+
     // --- Mock storage -----------------------------------------------------
     // No backend yet, so tickets live in localStorage under this key.
     // Swap PARAVERSE_TICKETS.* calls for real API calls once the backend exists.
@@ -54,6 +65,10 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
             tickets.unshift({
                 id: "TCK-" + Date.now(),
                 submittedBy: ticket.submittedBy || "Unknown user", // auto-filled server-side later
+                // Role and avatar are placeholders until the backend/login
+                // session supplies the real values for whoever is logged in.
+                submittedByRole: ticket.submittedByRole || USER_ROLE.STUDENT,
+                submittedByAvatar: ticket.submittedByAvatar || DEFAULT_AVATAR,
                 app: ticket.app,
                 description: ticket.description,
                 status: TICKET_STATUS.OPEN,
@@ -71,6 +86,7 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
 
         // Seeds a set of sample rows so the admin table isn't empty on first
         // load, and so sorting/timestamps have some real variety to show.
+        // Mixes Student/Associate roles so both badge styles are visible.
         seedIfEmpty() {
             if (PARAVERSE_TICKETS.getAll().length > 0) return;
 
@@ -78,6 +94,8 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                 {
                     id: "TCK-1001",
                     submittedBy: "Maria Santos",
+                    submittedByRole: USER_ROLE.STUDENT,
+                    submittedByAvatar: DEFAULT_AVATAR,
                     app: "iCare",
                     description: "Cannot book an appointment with faculty.",
                     status: TICKET_STATUS.OPEN,
@@ -86,6 +104,8 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                 {
                     id: "TCK-1002",
                     submittedBy: "Juan Dela Cruz",
+                    submittedByRole: USER_ROLE.STUDENT,
+                    submittedByAvatar: DEFAULT_AVATAR,
                     app: "Briefcase",
                     description: "Cannot add a new section to profile.",
                     status: TICKET_STATUS.OPEN,
@@ -94,6 +114,8 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                 {
                     id: "TCK-1003",
                     submittedBy: "Ana Reyes",
+                    submittedByRole: USER_ROLE.ASSOCIATE,
+                    submittedByAvatar: DEFAULT_AVATAR,
                     app: "Virtual Office",
                     description: "Camera and microphone not working during session.",
                     status: TICKET_STATUS.COMPLETED,
@@ -102,6 +124,8 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                 {
                     id: "TCK-1004",
                     submittedBy: "Carlos Mendoza",
+                    submittedByRole: USER_ROLE.STUDENT,
+                    submittedByAvatar: DEFAULT_AVATAR,
                     app: "M-Flix",
                     description: "Video buffering constantly even on fast connection.",
                     status: TICKET_STATUS.OPEN,
@@ -110,6 +134,8 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                 {
                     id: "TCK-1005",
                     submittedBy: "Liza Villanueva",
+                    submittedByRole: USER_ROLE.ASSOCIATE,
+                    submittedByAvatar: DEFAULT_AVATAR,
                     app: "Calendar",
                     description: "Events not syncing with my schedule.",
                     status: TICKET_STATUS.CANCELLED,
@@ -118,6 +144,8 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                 {
                     id: "TCK-1006",
                     submittedBy: "Rico Dalisay",
+                    submittedByRole: USER_ROLE.STUDENT,
+                    submittedByAvatar: DEFAULT_AVATAR,
                     app: "Portal",
                     description: "Session keeps expiring every few minutes.",
                     status: TICKET_STATUS.OPEN,
@@ -126,6 +154,8 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                 {
                     id: "TCK-1007",
                     submittedBy: "Jasmine Lim",
+                    submittedByRole: USER_ROLE.ASSOCIATE,
+                    submittedByAvatar: DEFAULT_AVATAR,
                     app: "GCO Connect",
                     description: "Notifications not showing up for new messages.",
                     status: TICKET_STATUS.COMPLETED,
@@ -134,6 +164,8 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                 {
                     id: "TCK-1008",
                     submittedBy: "Paolo Gutierrez",
+                    submittedByRole: USER_ROLE.STUDENT,
+                    submittedByAvatar: DEFAULT_AVATAR,
                     app: "Repository",
                     description: "Files not uploading, stuck at 0%.",
                     status: TICKET_STATUS.OPEN,
@@ -148,7 +180,10 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
 
 // Local references so the rest of the code (and any script tag that
 // loads after this one) can keep using the bare names PARAVERSE_APPS,
-// TICKET_STATUS, PARAVERSE_TICKETS without the window. prefix.
+// TICKET_STATUS, PARAVERSE_TICKETS, USER_ROLE, DEFAULT_AVATAR without
+// the window. prefix.
 var PARAVERSE_APPS = window.PARAVERSE_APPS;
 var TICKET_STATUS = window.TICKET_STATUS;
 var PARAVERSE_TICKETS = window.PARAVERSE_TICKETS;
+var USER_ROLE = window.USER_ROLE;
+var DEFAULT_AVATAR = window.DEFAULT_AVATAR;

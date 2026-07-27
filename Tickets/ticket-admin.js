@@ -43,7 +43,7 @@ $(function () {
             columns: [
                 { data: "index", className: "pv-id-cell" },
                 { data: "app", className: "pv-app-cell" },
-                { data: "submittedBy", className: "pv-submitted-cell" },
+                { data: "submittedByHtml", className: "pv-submitted-cell" },
                 { data: "description", className: "pv-desc-cell" },
                 { data: "statusHtml", className: "pv-status-badge-cell" },
                 { data: "actions", className: "pv-action-cell text-end", orderable: false, searchable: false }
@@ -71,6 +71,30 @@ $(function () {
     function appLogoHtml(appName) {
         const logoPath = getAppLogo(appName);
         return `<img src="${logoPath}" alt="${appName}" title="${appName}" class="pv-app-logo">`;
+    }
+
+    // Maps a role string to the CSS modifier class for its badge color.
+    function roleBadgeClass(role) {
+        if (role === USER_ROLE.ASSOCIATE) return "pv-role-associate";
+        return "pv-role-student";
+    }
+
+    // Renders the Submitted By column: avatar on the left, name (top)
+    // and role badge (bottom) stacked on the right. Search/filter still
+    // matches against the plain ticket.submittedBy string, unaffected
+    // by this markup.
+    function userCellHtml(ticket) {
+        const avatar = ticket.submittedByAvatar || DEFAULT_AVATAR;
+        const role = ticket.submittedByRole || USER_ROLE.STUDENT;
+        return `
+      <div class="pv-user-cell">
+        <img src="${avatar}" alt="${ticket.submittedBy}" class="pv-user-avatar">
+        <div class="pv-user-info">
+          <span class="pv-user-name">${ticket.submittedBy}</span>
+          <span class="pv-user-role-badge ${roleBadgeClass(role)}">${role}</span>
+        </div>
+      </div>
+    `;
     }
 
     function statusBadgeStyle(status) {
@@ -129,7 +153,7 @@ $(function () {
             const rows = visible.map((ticket, index) => ({
                 index: `#${index + 1}`,
                 app: appLogoHtml(ticket.app),
-                submittedBy: ticket.submittedBy,
+                submittedByHtml: userCellHtml(ticket),
                 description: ticket.description,
                 statusHtml: `<span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${ticket.status}</span>`,
                 actions: actionButtonsHtml(ticket),
@@ -148,7 +172,7 @@ $(function () {
           <tr>
             <td class="pv-id-cell">#${index + 1}</td>
             <td class="pv-app-cell">${appLogoHtml(ticket.app)}</td>
-            <td class="pv-submitted-cell">${ticket.submittedBy}</td>
+            <td class="pv-submitted-cell">${userCellHtml(ticket)}</td>
             <td class="pv-desc-cell" title="${ticket.description}">${ticket.description}</td>
             <td><span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${ticket.status}</span></td>
             <td class="pv-action-cell">${actionButtonsHtml(ticket)}</td>

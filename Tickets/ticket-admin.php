@@ -252,9 +252,65 @@
         vertical-align: middle;
     }
 
+    /* Submitted By column — avatar on the left, name + role badge
+       stacked on the right. */
     .pv-submitted-cell {
-        color: #3D3D5C;
         white-space: nowrap;
+    }
+
+    .pv-user-cell {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .pv-user-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        background: #F8F9FB;
+        border: 1px solid var(--pv-border);
+    }
+
+    .pv-user-info {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        min-width: 0;
+    }
+
+    .pv-user-name {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--pv-text);
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .pv-user-role-badge {
+        display: inline-block;
+        width: fit-content;
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        padding: 1px 8px;
+        border-radius: 10px;
+        line-height: 1.5;
+    }
+
+    .pv-role-student {
+        background: #E0E7FF;
+        color: #4338CA;
+    }
+
+    .pv-role-associate {
+        background: #FEF3C7;
+        color: #92400E;
     }
 
     .pv-desc-cell {
@@ -399,7 +455,7 @@
                             <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                 <th class="p-0 w-50px">#</th>
                                 <th class="p-0 min-w-175px">Paraverse app</th>
-                                <th class="p-0 min-w-140px">Submitted by</th>
+                                <th class="p-0 min-w-200px">Submitted by</th>
                                 <th class="p-0 min-w-220px">Description</th>
                                 <th class="p-0 min-w-100px">Status</th>
                                 <th class="p-0 min-w-220px text-end">Action</th>
