@@ -249,6 +249,26 @@
                 </div>
                 <div class="card-body py-6">
                     <form id="pvTicketForm" novalidate>
+                        <!-- Placeholder fields until real login/session data supplies these automatically -->
+                        <div class="fv-row mb-5">
+                            <label for="pvSubmitterName" class="form-label fw-semibold">Your name</label>
+                            <input
+                                type="text"
+                                class="form-control form-control-solid"
+                                id="pvSubmitterName"
+                                placeholder="Juan Dela Cruz"
+                                required>
+                        </div>
+
+                        <div class="fv-row mb-5">
+                            <label for="pvSubmitterRole" class="form-label fw-semibold">Are you a student or associate?</label>
+                            <select class="form-select form-select-solid" id="pvSubmitterRole" required>
+                                <option value="" selected>— Select one —</option>
+                                <option value="Student">Student</option>
+                                <option value="Associate">Associate</option>
+                            </select>
+                        </div>
+
                         <div class="fv-row mb-5">
                             <label for="pvAppSelect" class="form-label fw-semibold">Which app has a problem?</label>
                             <select class="form-select form-select-solid" id="pvAppSelect" required>

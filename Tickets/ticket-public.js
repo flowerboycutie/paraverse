@@ -1,6 +1,8 @@
 // ticket-public.js
 
 $(function () {
+    const $submitterName = $("#pvSubmitterName");
+    const $submitterRole = $("#pvSubmitterRole");
     const $appSelect = $("#pvAppSelect");
     const $description = $("#pvDescription");
     const $submitBtn = $("#pvSubmitBtn");
@@ -21,7 +23,15 @@ $(function () {
     });
 
     function checkReady() {
-        $submitBtn.prop("disabled", !($appSelect.val() && $description.val().trim()));
+        $submitBtn.prop(
+            "disabled",
+            !(
+                $submitterName.val().trim() &&
+                $submitterRole.val() &&
+                $appSelect.val() &&
+                $description.val().trim()
+            )
+        );
     }
 
     function renderChips(appName) {
@@ -76,6 +86,8 @@ $(function () {
 
     function resetForm() {
         $form[0].reset();
+        $submitterName.val("");
+        $submitterRole.val("");
         $appSelect.val("");
         $description.val("");
         $suggestionsArea.hide();
@@ -84,6 +96,9 @@ $(function () {
         $submitBtn.prop("disabled", true);
         showForm();
     }
+
+    $submitterName.on("input", checkReady);
+    $submitterRole.on("change", checkReady);
 
     $appSelect.on("change", function () {
         $description.val("");
@@ -96,9 +111,18 @@ $(function () {
     $form.on("submit", function (e) {
         e.preventDefault();
 
-        if (!$appSelect.val() || !$description.val().trim()) return;
+        if (
+            !$submitterName.val().trim() ||
+            !$submitterRole.val() ||
+            !$appSelect.val() ||
+            !$description.val().trim()
+        ) {
+            return;
+        }
 
         PARAVERSE_TICKETS.add({
+            submittedBy: $submitterName.val().trim(),
+            submittedByRole: $submitterRole.val(),
             app: $appSelect.val(),
             description: $description.val().trim(),
         });
