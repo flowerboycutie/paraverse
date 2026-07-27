@@ -234,6 +234,24 @@
         white-space: nowrap;
     }
 
+    /* App logo column — fixed size so every logo displays uniformly,
+       regardless of the source image's actual dimensions. Logos are
+       landscape (icon + text side by side), so the box is wide and
+       short rather than square. */
+    .pv-app-cell {
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .pv-app-logo {
+        width: 140px;
+        height: 36px;
+        object-fit: contain;
+        object-position: left center;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
     .pv-submitted-cell {
         color: #3D3D5C;
         white-space: nowrap;
@@ -380,7 +398,7 @@
                         <thead>
                             <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                 <th class="p-0 w-50px">#</th>
-                                <th class="p-0 min-w-150px">Paraverse app</th>
+                                <th class="p-0 min-w-175px">Paraverse app</th>
                                 <th class="p-0 min-w-140px">Submitted by</th>
                                 <th class="p-0 min-w-220px">Description</th>
                                 <th class="p-0 min-w-100px">Status</th>

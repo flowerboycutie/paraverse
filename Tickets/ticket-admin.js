@@ -42,7 +42,7 @@ $(function () {
             },
             columns: [
                 { data: "index", className: "pv-id-cell" },
-                { data: "app" },
+                { data: "app", className: "pv-app-cell" },
                 { data: "submittedBy", className: "pv-submitted-cell" },
                 { data: "description", className: "pv-desc-cell" },
                 { data: "statusHtml", className: "pv-status-badge-cell" },
@@ -56,6 +56,22 @@ $(function () {
         $option.val(app.name).text(app.name);
         $appFilter.append($option);
     });
+
+    // Looks up an app's logo path by name. Falls back to a generic
+    // placeholder icon if the app isn't found or has no logo set, so a
+    // missing/renamed app never breaks the table layout.
+    function getAppLogo(appName) {
+        const app = PARAVERSE_APPS.find((a) => a.name === appName);
+        return (app && app.logo) || "/assets/media/apps/default.png";
+    }
+
+    // Renders the App column as a fixed-size logo image (not text) —
+    // filtering/search still matches against the underlying ticket.app
+    // string via getVisibleTickets(), so this is purely visual.
+    function appLogoHtml(appName) {
+        const logoPath = getAppLogo(appName);
+        return `<img src="${logoPath}" alt="${appName}" title="${appName}" class="pv-app-logo">`;
+    }
 
     function statusBadgeStyle(status) {
         if (status === TICKET_STATUS.COMPLETED) {
@@ -112,7 +128,7 @@ $(function () {
         if (ticketDataTable) {
             const rows = visible.map((ticket, index) => ({
                 index: `#${index + 1}`,
-                app: `<span class="pv-app-badge">${ticket.app}</span>`,
+                app: appLogoHtml(ticket.app),
                 submittedBy: ticket.submittedBy,
                 description: ticket.description,
                 statusHtml: `<span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${ticket.status}</span>`,
@@ -131,7 +147,7 @@ $(function () {
                         .map((ticket, index) => `
           <tr>
             <td class="pv-id-cell">#${index + 1}</td>
-            <td><span class="pv-app-badge">${ticket.app}</span></td>
+            <td class="pv-app-cell">${appLogoHtml(ticket.app)}</td>
             <td class="pv-submitted-cell">${ticket.submittedBy}</td>
             <td class="pv-desc-cell" title="${ticket.description}">${ticket.description}</td>
             <td><span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${ticket.status}</span></td>

@@ -1,29 +1,30 @@
 // ticket-data.js
-// Safe to include more than once on the same page (e.g. when both
-// ticket-admin.php and ticket-public.php are rendered together in
-// index.php, each with their own <script src="ticket-data.js">).
-// Everything is wrapped so re-running this file is a no-op the
-// second time instead of throwing "already been declared".
 
 if (typeof window.PARAVERSE_APPS === "undefined") {
 
+    // Each app has a "logo" path — this is a TEMPLATE. Swap these paths
+    // for wherever your actual app logo images live (e.g. an existing
+    // /assets/img/logo/logo folder, or wherever Paraverse already stores
+    // per-app icons). The filename pattern below is just a placeholder
+    // guess (lowercase, spaces/& replaced with hyphens) — update freely,
+    // per app, to match your real asset paths.
     window.PARAVERSE_APPS = [
-        { name: "Portal", examples: ["Cannot log in to the portal", "Session keeps expiring unexpectedly", "Page not loading or showing blank screen"] },
-        { name: "Account", examples: ["Cannot update profile picture", "Password reset email not arriving", "Account details not saving after edit"] },
-        { name: "Network Map", examples: ["Network map not loading", "Connections not appearing on the map", "Map freezes when zooming in"] },
-        { name: "M-Flix", examples: ["Video not playing or buffering", "Cannot access certain content", "Subtitles not displaying correctly"] },
-        { name: "Arcadia", examples: ["Game not loading or crashing", "Leaderboard scores not updating", "Cannot access a specific game"] },
-        { name: "Briefcase", examples: ["Cannot add a new section to profile", "Documents not uploading", "Portfolio layout not saving"] },
-        { name: "Eventually", examples: ["Cannot create a new event", "Event invites not being sent", "RSVP not registering properly"] },
-        { name: "Repository", examples: ["Cannot upload files to repository", "Folder structure not saving", "Files not downloading correctly"] },
-        { name: "Calendar", examples: ["Events not syncing with my schedule", "Cannot set or edit reminders", "Calendar not loading"] },
-        { name: "Leaderboard", examples: ["Points not updating after activity", "Rankings displaying incorrectly", "Cannot view full leaderboard"] },
-        { name: "Canvas", examples: ["Whiteboard not loading", "Changes not saving after session", "Collaboration features not working"] },
-        { name: "LinkedIn", examples: ["Profile not syncing with LinkedIn", "Connections not importing properly", "LinkedIn login not working"] },
-        { name: "iCare", examples: ["Cannot book an appointment with faculty", "Appointment form not submitting", "Booking confirmation not received"] },
-        { name: "Virtual Office", examples: ["Cannot join a virtual room", "Camera or microphone not working", "Getting disconnected frequently"] },
-        { name: "Lost & Found", examples: ["Cannot post a lost or found item", "Images not uploading to listing", "Cannot contact the item poster"] },
-        { name: "GCO Connect", examples: ["Cannot send messages to contacts", "Notifications not showing up", "Group chat not loading"] },
+        { name: "Portal", logo: "/assets/img/logo/logo-portal.svg", examples: ["Cannot log in to the portal", "Session keeps expiring unexpectedly", "Page not loading or showing blank screen"] },
+        { name: "Account", logo: "/assets/img/logo/logo-account.svg", examples: ["Cannot update profile picture", "Password reset email not arriving", "Account details not saving after edit"] },
+        { name: "Network Map", logo: "/assets/img/logo/logo-network-map.svg", examples: ["Network map not loading", "Connections not appearing on the map", "Map freezes when zooming in"] },
+        { name: "M-Flix", logo: "/assets/img/logo/logo-mflix.svg", examples: ["Video not playing or buffering", "Cannot access certain content", "Subtitles not displaying correctly"] },
+        { name: "Arcadia", logo: "/assets/img/logo/logo-arcadia.svg", examples: ["Game not loading or crashing", "Leaderboard scores not updating", "Cannot access a specific game"] },
+        { name: "Briefcase", logo: "/assets/img/logo/logo-briefcase.svg", examples: ["Cannot add a new section to profile", "Documents not uploading", "Portfolio layout not saving"] },
+        { name: "Eventually", logo: "/assets/img/logo/logo-eventually.svg", examples: ["Cannot create a new event", "Event invites not being sent", "RSVP not registering properly"] },
+        { name: "Repository", logo: "/assets/img/logo/logo-epository.svg", examples: ["Cannot upload files to repository", "Folder structure not saving", "Files not downloading correctly"] },
+        { name: "Calendar", logo: "/assets/img/logo/logo-calendar.svg", examples: ["Events not syncing with my schedule", "Cannot set or edit reminders", "Calendar not loading"] },
+        { name: "Leaderboard", logo: "/assets/img/logo/logo-leaderboard.svg", examples: ["Points not updating after activity", "Rankings displaying incorrectly", "Cannot view full leaderboard"] },
+        { name: "Canvas", logo: "/assets/img/logo/logo-canvas.svg", examples: ["Whiteboard not loading", "Changes not saving after session", "Collaboration features not working"] },
+        { name: "LinkedIn", logo: "/assets/img/logo/logo-linkedin.svg", examples: ["Profile not syncing with LinkedIn", "Connections not importing properly", "LinkedIn login not working"] },
+        { name: "iCare", logo: "/assets/img/logo/logo-icare.jpg", examples: ["Cannot book an appointment with faculty", "Appointment form not submitting", "Booking confirmation not received"] },
+        { name: "Virtual Office", logo: "/assets/img/logo/logo-virtual-office.svg", examples: ["Cannot join a virtual room", "Camera or microphone not working", "Getting disconnected frequently"] },
+        { name: "Lost & Found", logo: "/assets/img/logo/logo-lost-and-found.svg", examples: ["Cannot post a lost or found item", "Images not uploading to listing", "Cannot contact the item poster"] },
+        { name: "GCO Connect", logo: "/assets/img/logo/logo-gco-connect.svg", examples: ["Cannot send messages to contacts", "Notifications not showing up", "Group chat not loading"] },
     ];
 
     // Ticket status values used across the admin view.
