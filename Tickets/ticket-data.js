@@ -45,6 +45,14 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
     // Swap for wherever real user profile pictures live once wired up.
     window.DEFAULT_AVATAR = "/assets/img/default.png";
 
+    // TEMPLATE PLACEHOLDER — this stands in for "whichever associate is
+    // currently logged in and clicking Complete." Once there's a real
+    // backend/login session, replace this single line with something like:
+    //   window.CURRENT_ASSOCIATE_NAME = SESSION_USER.fullName;
+    // Every ticket completed from here on will automatically pick up
+    // whatever name this constant holds — no other code needs to change.
+    window.CURRENT_ASSOCIATE_NAME = "Associate Name";
+
     // --- Mock storage -----------------------------------------------------
     // No backend yet, so tickets live in localStorage under this key.
     // Swap PARAVERSE_TICKETS.* calls for real API calls once the backend exists.
@@ -77,10 +85,17 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
             PARAVERSE_TICKETS.saveAll(tickets);
         },
 
-        updateStatus(id, status) {
+        // completedBy is optional and only meaningful when status is
+        // TICKET_STATUS.COMPLETED. Reopening or cancelling a ticket clears
+        // it, so a ticket never shows a stale "Completed by" name if it
+        // gets completed again later by someone else.
+        updateStatus(id, status, completedBy) {
             const tickets = PARAVERSE_TICKETS.getAll();
             const t = tickets.find((t) => t.id === id);
-            if (t) t.status = status;
+            if (t) {
+                t.status = status;
+                t.completedBy = status === TICKET_STATUS.COMPLETED ? (completedBy || CURRENT_ASSOCIATE_NAME) : null;
+            }
             PARAVERSE_TICKETS.saveAll(tickets);
         },
 
@@ -119,6 +134,7 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                     app: "Virtual Office",
                     description: "Camera and microphone not working during session.",
                     status: TICKET_STATUS.COMPLETED,
+                    completedBy: "Associate Name",
                     createdAt: "2026-06-29T14:00:00.000Z",
                 },
                 {
@@ -159,6 +175,7 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                     app: "GCO Connect",
                     description: "Notifications not showing up for new messages.",
                     status: TICKET_STATUS.COMPLETED,
+                    completedBy: "Associate Name",
                     createdAt: "2026-06-27T13:20:00.000Z",
                 },
                 {
@@ -187,3 +204,4 @@ var TICKET_STATUS = window.TICKET_STATUS;
 var PARAVERSE_TICKETS = window.PARAVERSE_TICKETS;
 var USER_ROLE = window.USER_ROLE;
 var DEFAULT_AVATAR = window.DEFAULT_AVATAR;
+var CURRENT_ASSOCIATE_NAME = window.CURRENT_ASSOCIATE_NAME;

@@ -457,7 +457,7 @@
                                 <th class="p-0 min-w-175px">Paraverse app</th>
                                 <th class="p-0 min-w-200px">Submitted by</th>
                                 <th class="p-0 min-w-220px">Description</th>
-                                <th class="p-0 min-w-100px">Status</th>
+                                <th class="p-0 min-w-190px">Status</th>
                                 <th class="p-0 min-w-220px text-end">Action</th>
                             </tr>
                         </thead>

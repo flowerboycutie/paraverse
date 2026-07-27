@@ -97,6 +97,18 @@ $(function () {
     `;
     }
 
+    // Completed tickets show who completed them; other statuses show
+    // the plain status text. completedBy is a placeholder name for now
+    // (see CURRENT_ASSOCIATE_NAME in ticket-data.js) — once real associate
+    // logins exist, this will read whatever name got stored on the ticket
+    // without any change needed here.
+    function statusLabelText(ticket) {
+        if (ticket.status === TICKET_STATUS.COMPLETED) {
+            return `Completed by: ${ticket.completedBy || CURRENT_ASSOCIATE_NAME}`;
+        }
+        return ticket.status;
+    }
+
     function statusBadgeStyle(status) {
         if (status === TICKET_STATUS.COMPLETED) {
             return "background: var(--pv-done-bg); color: var(--pv-done-text);";
@@ -155,7 +167,7 @@ $(function () {
                 app: appLogoHtml(ticket.app),
                 submittedByHtml: userCellHtml(ticket),
                 description: ticket.description,
-                statusHtml: `<span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${ticket.status}</span>`,
+                statusHtml: `<span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${statusLabelText(ticket)}</span>`,
                 actions: actionButtonsHtml(ticket),
                 id: ticket.id,
             }));
@@ -174,7 +186,7 @@ $(function () {
             <td class="pv-app-cell">${appLogoHtml(ticket.app)}</td>
             <td class="pv-submitted-cell">${userCellHtml(ticket)}</td>
             <td class="pv-desc-cell" title="${ticket.description}">${ticket.description}</td>
-            <td><span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${ticket.status}</span></td>
+            <td><span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${statusLabelText(ticket)}</span></td>
             <td class="pv-action-cell">${actionButtonsHtml(ticket)}</td>
           </tr>
         `)
@@ -236,7 +248,9 @@ $(function () {
         if (action === "complete") newStatus = TICKET_STATUS.COMPLETED;
         if (action === "cancel") newStatus = TICKET_STATUS.CANCELLED;
 
-        PARAVERSE_TICKETS.updateStatus(id, newStatus);
+        // CURRENT_ASSOCIATE_NAME is the placeholder for "whoever is
+        // currently logged in" — see ticket-data.js for the swap-in point.
+        PARAVERSE_TICKETS.updateStatus(id, newStatus, CURRENT_ASSOCIATE_NAME);
         render();
     });
 
