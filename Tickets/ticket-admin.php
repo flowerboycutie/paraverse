@@ -323,7 +323,7 @@
 
     /* Details column — far right, opens the description popup. */
     .pv-details-cell {
-        text-align: right;
+        text-align: left;
         white-space: nowrap;
     }
 
@@ -448,7 +448,7 @@
     }
 
     .pv-action-cell {
-        text-align: right;
+        text-align: left;
         white-space: nowrap;
     }
 
@@ -481,6 +481,18 @@
     .pv-reopen-btn {
         background: #F0F0F5;
         color: #888888;
+    }
+
+    /* Header cells have Bootstrap's p-0 utility class in the markup
+       (zero padding), while body cells get their spacing from
+       Metronic's gs-0/gy-3 table classes — this overrides both so
+       header and body cells match exactly. */
+    #pvTicketTable thead th {
+        padding: 12px 16px !important;
+    }
+
+    #pvTicketTable tbody td {
+        padding: 14px 16px;
     }
 
     .pv-empty-row td {
@@ -574,8 +586,8 @@
                                 <th class="p-0 min-w-175px">Paraverse app</th>
                                 <th class="p-0 min-w-200px">Submitted by</th>
                                 <th class="p-0 min-w-190px">Status</th>
-                                <th class="p-0 min-w-220px text-end">Action</th>
-                                <th class="p-0 min-w-140px text-end">Details</th>
+                                <th class="p-0 min-w-220px">Action</th>
+                                <th class="p-0 min-w-140px">Details</th>
                             </tr>
                         </thead>
                         <tbody id="pvTicketTableBody"></tbody>

@@ -53,8 +53,8 @@ $(function () {
                 { data: "app", className: "pv-app-cell" },
                 { data: "submittedByHtml", className: "pv-submitted-cell" },
                 { data: "statusHtml", className: "pv-status-badge-cell" },
-                { data: "actions", className: "pv-action-cell text-end", orderable: false, searchable: false },
-                { data: "detailsHtml", className: "pv-details-cell text-end", orderable: false, searchable: false }
+                { data: "actions", className: "pv-action-cell", orderable: false, searchable: false },
+                { data: "detailsHtml", className: "pv-details-cell", orderable: false, searchable: false }
             ]
         });
     }
@@ -227,7 +227,7 @@ $(function () {
             <td class="pv-submitted-cell">${userCellHtml(ticket)}</td>
             <td><span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${statusLabelText(ticket)}</span></td>
             <td class="pv-action-cell">${actionButtonsHtml(ticket)}</td>
-            <td class="pv-details-cell text-end">${detailsButtonHtml(ticket)}</td>
+            <td class="pv-details-cell">${detailsButtonHtml(ticket)}</td>
           </tr>
         `)
                         .join("")
