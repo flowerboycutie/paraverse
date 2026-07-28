@@ -18,6 +18,14 @@ $(function () {
     const $countCancelledEl = $("#pvCountCancelled");
     const $summaryCards = $(".pv-summary-card");
 
+    // Details modal refs
+    const $detailsModalOverlay = $("#pvDetailsModalOverlay");
+    const $modalApp = $("#pvModalTicketApp");
+    const $modalSubmittedBy = $("#pvModalSubmittedBy");
+    const $modalStatus = $("#pvModalStatus");
+    const $modalDescription = $("#pvModalDescription");
+    const $modalCloseBtn = $("#pvModalCloseBtn");
+
     let filterApp = "All Apps";
     let filterStatus = "All";
     let searchText = "";
@@ -44,9 +52,9 @@ $(function () {
                 { data: "index", className: "pv-id-cell" },
                 { data: "app", className: "pv-app-cell" },
                 { data: "submittedByHtml", className: "pv-submitted-cell" },
-                { data: "description", className: "pv-desc-cell" },
                 { data: "statusHtml", className: "pv-status-badge-cell" },
-                { data: "actions", className: "pv-action-cell text-end", orderable: false, searchable: false }
+                { data: "actions", className: "pv-action-cell text-end", orderable: false, searchable: false },
+                { data: "detailsHtml", className: "pv-details-cell text-end", orderable: false, searchable: false }
             ]
         });
     }
@@ -129,6 +137,12 @@ $(function () {
         return `<button class="pv-action-btn pv-reopen-btn" data-id="${ticket.id}" data-action="reopen">Reopen</button>`;
     }
 
+    // "View details »" button — the description no longer shows directly
+    // in the row; this opens the modal with the full ticket info instead.
+    function detailsButtonHtml(ticket) {
+        return `<button type="button" class="pv-details-btn" data-id="${ticket.id}">View details &raquo;</button>`;
+    }
+
     function getVisibleTickets(allTickets) {
         return allTickets.filter((ticket) => {
             if (filterApp !== "All Apps" && ticket.app !== filterApp) return false;
@@ -152,6 +166,32 @@ $(function () {
         $totalCountEl.text(allTickets.length);
     }
 
+    // --- Details modal -------------------------------------------------
+
+    function openDetailsModal(ticket) {
+        $modalApp.html(appLogoHtml(ticket.app));
+        $modalSubmittedBy.html(userCellHtml(ticket));
+        $modalStatus.html(`<span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${statusLabelText(ticket)}</span>`);
+        $modalDescription.text(ticket.description);
+        $detailsModalOverlay.addClass("pv-modal-open");
+    }
+
+    function closeDetailsModal() {
+        $detailsModalOverlay.removeClass("pv-modal-open");
+    }
+
+    $modalCloseBtn.on("click", closeDetailsModal);
+
+    $detailsModalOverlay.on("click", function (e) {
+        if (e.target === this) closeDetailsModal();
+    });
+
+    $(document).on("keydown", function (e) {
+        if (e.key === "Escape" && $detailsModalOverlay.hasClass("pv-modal-open")) {
+            closeDetailsModal();
+        }
+    });
+
     function render() {
         const allTickets = PARAVERSE_TICKETS.getAll();
         const visible = getVisibleTickets(allTickets);
@@ -166,9 +206,9 @@ $(function () {
                 index: `#${index + 1}`,
                 app: appLogoHtml(ticket.app),
                 submittedByHtml: userCellHtml(ticket),
-                description: ticket.description,
                 statusHtml: `<span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${statusLabelText(ticket)}</span>`,
                 actions: actionButtonsHtml(ticket),
+                detailsHtml: detailsButtonHtml(ticket),
                 id: ticket.id,
             }));
 
@@ -185,9 +225,9 @@ $(function () {
             <td class="pv-id-cell">#${index + 1}</td>
             <td class="pv-app-cell">${appLogoHtml(ticket.app)}</td>
             <td class="pv-submitted-cell">${userCellHtml(ticket)}</td>
-            <td class="pv-desc-cell" title="${ticket.description}">${ticket.description}</td>
             <td><span class="pv-status-badge" style="${statusBadgeStyle(ticket.status)}">${statusLabelText(ticket)}</span></td>
             <td class="pv-action-cell">${actionButtonsHtml(ticket)}</td>
+            <td class="pv-details-cell text-end">${detailsButtonHtml(ticket)}</td>
           </tr>
         `)
                         .join("")
@@ -252,6 +292,12 @@ $(function () {
         // currently logged in" — see ticket-data.js for the swap-in point.
         PARAVERSE_TICKETS.updateStatus(id, newStatus, CURRENT_ASSOCIATE_NAME);
         render();
+    });
+
+    $tableBody.on("click", ".pv-details-btn", function () {
+        const id = $(this).data("id");
+        const ticket = PARAVERSE_TICKETS.getAll().find((t) => t.id === id);
+        if (ticket) openDetailsModal(ticket);
     });
 
     render();

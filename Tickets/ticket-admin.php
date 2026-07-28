@@ -321,6 +321,123 @@
         color: #555555;
     }
 
+    /* Details column — far right, opens the description popup. */
+    .pv-details-cell {
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    .pv-details-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border: none;
+        background: transparent;
+        color: var(--pv-primary);
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-family: inherit;
+        white-space: nowrap;
+    }
+
+    .pv-details-btn:hover {
+        background: var(--pv-primary-light);
+    }
+
+    /* Ticket details modal */
+    .pv-modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(26, 26, 46, 0.55);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+    }
+
+    .pv-modal-overlay.pv-modal-open {
+        display: flex;
+    }
+
+    .pv-modal {
+        background: #ffffff;
+        border-radius: 12px;
+        max-width: 480px;
+        width: 100%;
+        max-height: 85vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', Helvetica, Arial, sans-serif;
+    }
+
+    .pv-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        border-bottom: 1px solid #F0F0F5;
+    }
+
+    .pv-modal-header h5 {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        min-width: 0;
+    }
+
+    .pv-modal-close {
+        border: none;
+        background: transparent;
+        color: var(--pv-muted);
+        font-size: 1.25rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: 6px;
+        flex-shrink: 0;
+        margin-left: 12px;
+    }
+
+    .pv-modal-close:hover {
+        background: #F8F9FB;
+    }
+
+    .pv-modal-body {
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .pv-modal-row {
+        margin-bottom: 18px;
+    }
+
+    .pv-modal-row:last-child {
+        margin-bottom: 0;
+    }
+
+    .pv-modal-label {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        color: var(--pv-muted);
+        margin-bottom: 8px;
+    }
+
+    .pv-modal-description {
+        font-size: 0.875rem;
+        color: var(--pv-text);
+        line-height: 1.6;
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
     .pv-status-badge {
         display: inline-block;
         font-size: 0.75rem;
@@ -456,9 +573,9 @@
                                 <th class="p-0 w-50px">#</th>
                                 <th class="p-0 min-w-175px">Paraverse app</th>
                                 <th class="p-0 min-w-200px">Submitted by</th>
-                                <th class="p-0 min-w-220px">Description</th>
                                 <th class="p-0 min-w-190px">Status</th>
                                 <th class="p-0 min-w-220px text-end">Action</th>
+                                <th class="p-0 min-w-140px text-end">Details</th>
                             </tr>
                         </thead>
                         <tbody id="pvTicketTableBody"></tbody>
@@ -473,6 +590,30 @@
 
     </div>
 </section>
+
+<!-- Ticket details modal, shared across all rows -->
+<div class="pv-modal-overlay" id="pvDetailsModalOverlay">
+    <div class="pv-modal">
+        <div class="pv-modal-header">
+            <h5 id="pvModalTicketApp">Ticket details</h5>
+            <button type="button" class="pv-modal-close" id="pvModalCloseBtn" aria-label="Close">&times;</button>
+        </div>
+        <div class="pv-modal-body">
+            <div class="pv-modal-row">
+                <span class="pv-modal-label">Submitted by</span>
+                <div id="pvModalSubmittedBy"></div>
+            </div>
+            <div class="pv-modal-row">
+                <span class="pv-modal-label">Status</span>
+                <div id="pvModalStatus"></div>
+            </div>
+            <div class="pv-modal-row">
+                <span class="pv-modal-label">Description</span>
+                <p class="pv-modal-description" id="pvModalDescription"></p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="/assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="ticket-data.js?v=<?= time() ?>"></script>
