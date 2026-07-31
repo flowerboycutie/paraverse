@@ -105,14 +105,20 @@ $(function () {
     `;
     }
 
-    // Completed tickets show who completed them; other statuses show
-    // the plain status text. completedBy is a placeholder name for now
-    // (see CURRENT_ASSOCIATE_NAME in ticket-data.js) — once real associate
-    // logins exist, this will read whatever name got stored on the ticket
-    // without any change needed here.
+    // Completed/Cancelled tickets show who did it; a ticket that's been
+    // reopened after being completed/cancelled shows who reopened it.
+    // A freshly submitted ticket (status Open, never touched by an
+    // admin action) just shows plain "Open" — lastActionBy is only set
+    // once an admin action has actually happened, see ticket-data.js.
     function statusLabelText(ticket) {
         if (ticket.status === TICKET_STATUS.COMPLETED) {
-            return `Completed by: ${ticket.completedBy || CURRENT_ASSOCIATE_NAME}`;
+            return `Completed by: ${ticket.lastActionBy || CURRENT_ASSOCIATE_NAME}`;
+        }
+        if (ticket.status === TICKET_STATUS.CANCELLED) {
+            return `Cancelled by: ${ticket.lastActionBy || CURRENT_ASSOCIATE_NAME}`;
+        }
+        if (ticket.status === TICKET_STATUS.OPEN && ticket.lastActionBy) {
+            return `Reopened by: ${ticket.lastActionBy}`;
         }
         return ticket.status;
     }

@@ -46,10 +46,11 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
     window.DEFAULT_AVATAR = "/assets/img/default.png";
 
     // TEMPLATE PLACEHOLDER — this stands in for "whichever associate is
-    // currently logged in and clicking Complete." Once there's a real
-    // backend/login session, replace this single line with something like:
+    // currently logged in and clicking Complete/Cancel/Reopen." Once
+    // there's a real backend/login session, replace this single line with
+    // something like:
     //   window.CURRENT_ASSOCIATE_NAME = SESSION_USER.fullName;
-    // Every ticket completed from here on will automatically pick up
+    // Every status change from here on will automatically pick up
     // whatever name this constant holds — no other code needs to change.
     window.CURRENT_ASSOCIATE_NAME = "Associate Name";
 
@@ -80,28 +81,33 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                 app: ticket.app,
                 description: ticket.description,
                 status: TICKET_STATUS.OPEN,
+                // lastActionBy is intentionally left unset here — a freshly
+                // submitted ticket hasn't had any admin action taken on it
+                // yet, so it should just show "Open", not "Reopened by: ...".
                 createdAt: new Date().toISOString(),
             });
             PARAVERSE_TICKETS.saveAll(tickets);
         },
 
-        // completedBy is optional and only meaningful when status is
-        // TICKET_STATUS.COMPLETED. Reopening or cancelling a ticket clears
-        // it, so a ticket never shows a stale "Completed by" name if it
-        // gets completed again later by someone else.
-        updateStatus(id, status, completedBy) {
+        // lastActionBy records whoever most recently changed this ticket's
+        // status — used for "Completed by: X", "Cancelled by: X", and
+        // "Reopened by: X" labels. It's set on every status change
+        // (complete, cancel, or reopen), not just completion.
+        updateStatus(id, status, actorName) {
             const tickets = PARAVERSE_TICKETS.getAll();
             const t = tickets.find((t) => t.id === id);
             if (t) {
                 t.status = status;
-                t.completedBy = status === TICKET_STATUS.COMPLETED ? (completedBy || CURRENT_ASSOCIATE_NAME) : null;
+                t.lastActionBy = actorName || CURRENT_ASSOCIATE_NAME;
             }
             PARAVERSE_TICKETS.saveAll(tickets);
         },
 
         // Seeds a set of sample rows so the admin table isn't empty on first
         // load, and so sorting/timestamps have some real variety to show.
-        // Mixes Student/Associate roles so both badge styles are visible.
+        // Mixes Student/Associate roles so both badge styles are visible,
+        // and gives the Completed/Cancelled seed tickets a lastActionBy
+        // so "Completed by:" / "Cancelled by:" labels show immediately.
         seedIfEmpty() {
             if (PARAVERSE_TICKETS.getAll().length > 0) return;
 
@@ -134,7 +140,7 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                     app: "Virtual Office",
                     description: "Camera and microphone not working during session.",
                     status: TICKET_STATUS.COMPLETED,
-                    completedBy: "Associate Name",
+                    lastActionBy: "Associate Name",
                     createdAt: "2026-06-29T14:00:00.000Z",
                 },
                 {
@@ -155,6 +161,7 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                     app: "Calendar",
                     description: "Events not syncing with my schedule.",
                     status: TICKET_STATUS.CANCELLED,
+                    lastActionBy: "Associate Name",
                     createdAt: "2026-06-28T16:45:00.000Z",
                 },
                 {
@@ -175,7 +182,7 @@ if (typeof window.PARAVERSE_APPS === "undefined") {
                     app: "GCO Connect",
                     description: "Notifications not showing up for new messages.",
                     status: TICKET_STATUS.COMPLETED,
-                    completedBy: "Associate Name",
+                    lastActionBy: "Associate Name",
                     createdAt: "2026-06-27T13:20:00.000Z",
                 },
                 {
